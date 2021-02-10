@@ -115,6 +115,7 @@ dependencies:
     - pandas==1.2.2
     - pennylane==0.14.0
     - pennylane-qiskit==0.14.0
+    - pennylane-qulacs==0.14.0
     - ply==3.11
     - psutil==5.8.0
     - pybind11==2.6.2
