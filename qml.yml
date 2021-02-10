@@ -10,36 +10,82 @@ dependencies:
   - backports.functools_lru_cache=1.6.1=py_0
   - ca-certificates=2020.12.5=ha878542_0
   - certifi=2020.12.5=py39hf3d152e_1
+  - cycler=0.10.0=py_2
+  - dbus=1.13.6=hfdff14a_1
   - decorator=4.4.2=py_0
+  - expat=2.2.10=h9c3ff4c_0
+  - fontconfig=2.13.1=hba837de_1004
+  - freetype=2.10.4=h0708190_1
+  - gettext=0.19.8.1=h0b5b191_1005
+  - glib=2.66.6=h9c3ff4c_3
+  - glib-tools=2.66.6=h9c3ff4c_3
+  - gst-plugins-base=1.14.0=hbbd80ab_1
+  - gstreamer=1.14.0=h28cd5cc_2
+  - icu=58.2=hf484d3e_1000
   - ipython=7.20.0=py39hef51801_2
   - ipython_genutils=0.2.0=py_1
   - jedi=0.18.0=py39hf3d152e_2
+  - jpeg=9d=h36c2ea0_0
+  - kiwisolver=1.3.1=py39h1a9c180_1
+  - lcms2=2.12=hddcbb42_0
   - ld_impl_linux-64=2.35.1=hea4e1c9_2
+  - libblas=3.9.0=8_openblas
+  - libcblas=3.9.0=8_openblas
   - libffi=3.3=h58526e2_2
   - libgcc-ng=9.3.0=h2828fa1_18
+  - libgfortran-ng=9.3.0=hff62375_18
+  - libgfortran5=9.3.0=hff62375_18
+  - libglib=2.66.6=h1f3bc88_3
   - libgomp=9.3.0=h2828fa1_18
+  - libiconv=1.16=h516909a_0
+  - liblapack=3.9.0=8_openblas
+  - libopenblas=0.3.12=pthreads_h4812303_1
+  - libpng=1.6.37=h21135ba_2
   - libstdcxx-ng=9.3.0=h6de172a_18
+  - libtiff=4.2.0=hdc55705_0
+  - libuuid=2.32.1=h7f98852_1000
+  - libwebp-base=1.2.0=h7f98852_0
+  - libxcb=1.13=h7f98852_1003
+  - libxml2=2.9.10=hb55368b_3
+  - lz4-c=1.9.3=h9c3ff4c_0
+  - matplotlib=3.3.4=py39hf3d152e_0
+  - matplotlib-base=3.3.4=py39h2fa2bec_0
   - ncurses=6.2=h58526e2_4
+  - numpy=1.20.1=py39hdbf815f_0
+  - olefile=0.46=pyh9f0ad1d_1
   - openssl=1.1.1i=h7f98852_0
   - parso=0.8.1=pyhd8ed1ab_0
+  - pcre=8.44=he1b5a44_0
   - pexpect=4.8.0=pyh9f0ad1d_2
   - pickleshare=0.7.5=py_1003
+  - pillow=8.1.0=py39hf95b381_2
   - pip=21.0.1=pyhd8ed1ab_0
   - prompt-toolkit=3.0.14=pyha770c72_0
+  - pthread-stubs=0.4=h36c2ea0_1001
   - ptyprocess=0.7.0=pyhd3deb0d_0
   - pygments=2.7.4=pyhd8ed1ab_0
+  - pyparsing=2.4.7=pyh9f0ad1d_0
+  - pyqt=5.9.2=py39h2531618_6
   - python=3.9.1=hffdb5ce_5_cpython
+  - python-dateutil=2.8.1=py_0
   - python_abi=3.9=1_cp39
+  - qt=5.9.7=h5867ecd_1
   - readline=8.0=he28a2e2_2
   - setuptools=49.6.0=py39hf3d152e_3
+  - sip=4.19.13=py39h2531618_0
+  - six=1.15.0=pyh9f0ad1d_0
   - sqlite=3.34.0=h74cdb3f_0
   - tk=8.6.10=h21135ba_1
+  - tornado=6.1=py39h3811e60_1
   - traitlets=5.0.5=py_0
   - tzdata=2021a=he74cb21_0
   - wcwidth=0.2.5=pyh9f0ad1d_2
   - wheel=0.36.2=pyhd3deb0d_0
+  - xorg-libxau=1.0.9=h7f98852_0
+  - xorg-libxdmcp=1.1.3=h7f98852_0
   - xz=5.2.5=h516909a_1
   - zlib=1.2.11=h516909a_1010
+  - zstd=1.4.8=ha95c52a_1
   - pip:
     - appdirs==1.4.4
     - attrs==20.3.0
@@ -66,7 +112,6 @@ dependencies:
     - nest-asyncio==1.5.1
     - networkx==2.5
     - ntlm-auth==1.5.0
-    - numpy==1.20.1
     - pandas==1.2.2
     - pennylane==0.14.0
     - pennylane-qiskit==0.14.0
@@ -76,7 +121,6 @@ dependencies:
     - pycparser==2.20
     - pyrsistent==0.17.3
     - python-constraint==1.4.0
-    - python-dateutil==2.8.1
     - pytz==2021.1
     - qiskit==0.23.5
     - qiskit-aer==0.7.4
@@ -91,7 +135,6 @@ dependencies:
     - scikit-learn==0.24.1
     - scipy==1.6.0
     - semantic-version==2.6.0
-    - six==1.15.0
     - sympy==1.7.1
     - threadpoolctl==2.1.0
     - toml==0.10.2
