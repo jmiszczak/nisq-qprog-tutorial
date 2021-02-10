@@ -130,6 +130,7 @@ dependencies:
     - qiskit-ignis==0.5.2
     - qiskit-terra==0.16.4
     - quandl==3.6.0
+    - qulacs==0.2.0
     - requests==2.25.1
     - requests-ntlm==1.1.0
     - retworkx==0.7.2
