@@ -5,8 +5,8 @@ H = qml.Hamiltonian(
         [qml.PauliX(0), qml.PauliZ(1), qml.PauliX(0) @ qml.PauliX(1)]
         )
 
+print ("[INFO] Hamiltonian")
 print (H)
-
 
 t = 1
 n = 2
@@ -18,5 +18,7 @@ def circuit():
     qml.templates.ApproxTimeEvolution(H, t, n)
     return [qml.expval(qml.PauliZ(i)) for i in range(n)]
 
+print("[INFO] ApproxTimeEvolution template")
 circuit()
-print(circuit.draw())
+print (circuit.draw())
+
