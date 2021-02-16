@@ -8,4 +8,4 @@ Examples for DWave IDE
 
 ## Using in DWave IDE
 
-By using https://ide.dwavesys.io/#https://github.com/jmiszczak/nisq-qprog-tutorial you will open this report in Gitpod providd by DWave.
+By using https://ide.dwavesys.io/#https://github.com/jmiszczak/nisq-qprog-tutorial you will open this report in Gitpod provided by DWave.
