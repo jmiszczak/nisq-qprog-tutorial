@@ -2,10 +2,6 @@ from pyqubo import Array, UnaryEncInteger, LogEncInteger, Constraint, Placeholde
 
 city_no = 4
 
-# obj: 2*a+3*b
-# constr: 4*a - 3*b == 2
-# constr: 2*a + b <= 10
-
 a = UnaryEncInteger("a", (0, 10))
 b = LogEncInteger("b", (0, 12))
 s1 = LogEncInteger("s1", (0, 7))
