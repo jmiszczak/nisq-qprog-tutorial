@@ -1,13 +1,9 @@
 # based on example based on from https://github.com/recruit-communications/pyqubo/blob/master/notebooks/TSP.ipynb
 from pyqubo import Array, Placeholder, Constraint
-import matplotlib.pyplot as plt
-import networkx as nx
 import numpy as np
-from time import time 
 
 # Prepare binary vector with  bit $(i, j)$ representing to visit $j$ city at time $i$ 
-
-n_city = 60
+n_city = 10
 d = np.random.rand(n_city, n_city)
 d += np.transpose(d)
 x = Array.create('c', (n_city, n_city), 'BINARY')
@@ -39,20 +35,15 @@ model = H.compile()
 
 # Generate QUBO
 feed_dict = {'A': 4.0}
-t1 = time()
 bqm = model.to_bqm(feed_dict=feed_dict)
-print("to bqm", time() - t1)
 
-t1 = time()
-bqm = model.to_ising(feed_dict=feed_dict)
-print("to ising", time() - t1)
-
-# import neal
-# sa = neal.SimulatedAnnealingSampler()
-# sampleset = sa.sample(bqm, num_reads=100, num_sweeps=100)
-
-# # Decode solution
-# decoded_samples = model.decode_sampleset(sampleset, feed_dict=feed_dict)
-# best_sample = min(decoded_samples, key=lambda x: x.energy)
-# num_broken = len(best_sample.constraints(only_broken=True))
-# print("number of broken constarint = {}".format(num_broken))
+import neal
+sa = neal.SimulatedAnnealingSampler()
+sampleset = sa.sample(bqm, num_reads=100, num_sweeps=100)
+# 
+# Decode solution
+decoded_samples = model.decode_sampleset(sampleset, feed_dict=feed_dict)
+best_sample = min(decoded_samples, key=lambda x: x.energy)
+num_broken = len(best_sample.constraints(only_broken=True))
+print("number of broken constarint = {}".format(num_broken))
+print(best_sample)
