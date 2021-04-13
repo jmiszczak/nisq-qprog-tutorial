@@ -48,13 +48,13 @@ data = {None: {
 instance = my_model.create_instance(data)
 print(instance.is_constructed())
 
-opt = SolverFactory('py')
+opt = SolverFactory('cplex')
 results = opt.solve(instance)
 
 print("Objective value")
 print(value(instance.OBJ))
 print("Solution")
-for i,j in it.product(range(1,n+1), repeat=2):
+for i, j in it.product(range(1,n+1), repeat=2):
     print("x[{},{}] =".format(i,j), value(instance.x[i,j]))
 
 print("Constraint test")

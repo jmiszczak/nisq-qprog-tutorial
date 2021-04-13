@@ -1,16 +1,11 @@
 from pyqubo import Array, UnaryEncInteger, LogEncInteger, Constraint, Placeholder
 
-city_no = 4
-
 a = UnaryEncInteger("a", (0, 10))
 b = LogEncInteger("b", (0, 12))
 s1 = LogEncInteger("s1", (0, 7))
 
 objective = 2*a+3*b
-print(objective)
-
-A = Placeholder("A")
-B = Placeholder("B")
+A, B = Placeholder("A"), Placeholder("B")
 constraint1 = Constraint((4*a - 3*b - 2)**2, label="con1")
 constraint2 = Constraint((2*a + b - 10 + s1 )**2, label="con2")
 
@@ -30,6 +25,5 @@ best_sample = min(decoded_samples, key=lambda x: x.energy)
 num_broken = len(best_sample.constraints(only_broken=True))
 print("number of broken constarint = {}".format(num_broken))
 print(best_sample)
-print(best_sample.subh['a'])
-print(best_sample.subh['b'])
-print(best_sample.subh['s1'])
+print("a =", best_sample.subh['a'])
+print("b =", best_sample.subh['b'])
