@@ -12,7 +12,7 @@ To updated existing environement run
     
     conda env update -f nisq-qprog-tutorial.yml --prune
  
-Option `--prune` results in the remove of the unneeded dependiences.
+Option `--prune` results in the removal of the unneeded dependencies.
 
 ## Managing Anaconda installation
 
