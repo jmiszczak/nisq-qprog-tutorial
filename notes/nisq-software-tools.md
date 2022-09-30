@@ -17,6 +17,14 @@ https://github.com/iitis/qi
 
 ### Python
 
+#### Orquestra
+
+Orquestra automates the management of your quantum stack, from software to hardware.
+
+Orquestra® is the unified software platform for building, orchestrating and deploying quantum-ready applications™. These applications use both quantum and classical technologies, and are built to be forward-compatible with the latest software and hardware as they evolve due to Orquestra’s computational workflow paradigm
+
+https://www.orquestra.io/
+
 #### QuTip
 
 #### Qiskit
