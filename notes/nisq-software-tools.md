@@ -72,9 +72,21 @@ https://cqcl.github.io/pytket/manual/index.html
 
 ## Software directories and lists
 
-Quantiki
+### Quantiki
+
+https://www.quantiki.org/
+
+### QOSF
 
 Quantum Open Software Foundation
+
+https://www.qosf.org/
+
+### OQS
+
+Open Quantum Safe (OQS) project
+
+https://openquantumsafe.org/
 
 
 
