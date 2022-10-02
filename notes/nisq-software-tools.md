@@ -15,6 +15,16 @@ https://github.com/iitis/qi
 
 ## Language packages
 
+### C
+
+#### libqos
+
+liboqs is an open source C library for quantum-safe cryptographic algorithms.
+
+https://github.com/open-quantum-safe/liboqs
+
+
+
 ### Python
 
 #### Orquestra
