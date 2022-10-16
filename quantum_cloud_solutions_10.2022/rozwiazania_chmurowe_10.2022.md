@@ -1,6 +1,7 @@
 # Rozwiązania chmurowe dla obliczeń kwantowych
-
 ## Stan na październik 2022
+
+### Streszczenie
 
 Raport przedstawia zestawienie systemów udostępniających możliwość
 wykonywania obliczeń kwantowych z poziomu chmury obliczeniowej.
@@ -61,6 +62,14 @@ kwantowych świadczonych przez IBM Quantum. Obejmuje to dostęp do zestawu
 prototypowych procesorów kwantowych IBM, zestawu samouczków dotyczących obliczeń
 kwantowych oraz dostęp do interaktywnego podręcznika.
 
+![Przykład wykorzystania narzędzia Composer w systemie IBM Quantum](ibm-q-composer.png)
+
+IBM Quantum pozwala również na zarządzania zasobami komputerowymi przypisanymi
+do danego konta. W tej chili w podstawowoje wersji dostępnych jest sześć
+komputerów o maksymalnej pamięci 7 qubitów. IBM udostępnia równiez spejalizowane
+symulatory pozwalające na testowanie kodu kwantowego w różnych scenariuszach. 
+
+![Zarządzanie zasobami komputerowymi w paneu IBM Quantum](ibm-q-resources.png)
 
 ### D-Wave Systems
 
