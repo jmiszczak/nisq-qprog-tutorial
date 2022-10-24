@@ -1,3 +1,4 @@
+% !TeX spellcheck = pl_PL
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
@@ -74,8 +75,8 @@ kwantowych\\ {\normalsize Stan na październik
 \begin{abstract}
 Raport przedstawia zestawienie systemów udostępniających możliwość
 wykonywania obliczeń kwantowych z poziomu chmury obliczeniowej.
-Uwzględnione są rozwiązania poszczególnych firmy produkujących komputery
-kwantowe jak rozwiązania dostawców usług obliczeniowych.
+Uwzględnione są zarówno rozwiązania poszczególnych firmy produkujących komputery
+kwantowe jak i rozwiązania dostawców usług obliczeniowych.
 \end{abstract}
 
 
@@ -100,12 +101,12 @@ serwisie Amazon Braket}
 
 W chwili obecnej Amazon Braket udostępnia urządzenia firm D-Wave, ION Q,
 Oxford Quantum Circuit, Rigetti oraz Xanadu. Każde z tych urządzeń jest
-zbudowane w opariu o innny zestaw technologi i możliwości programowania.
+zbudowane w oparciu o inny zestaw technologi i możliwości programowania.
 
 \begin{figure}
 \centering
 \includegraphics{amazon-braket-10.0222.png}
-\caption{Urządzenia kwantowe dostępne poprzed interfejs AWS. Stan na
+\caption{Urządzenia kwantowe dostępne poprzez interfejs AWS. Stan na
 październik 2022}
 \end{figure}
 
@@ -113,18 +114,18 @@ październik 2022}
 \subsubsection{Google Cloud Platfrom}\label{google-cloud-platfrom}}
 
 Google Cloud oferuje dostęp do komputera firmy IonQ w ramach usłudi
-zarządzanej. Udsotępniana maszyna pozwala na wykonywania obliczeń z
+zarządzanej. Udostępniana maszyna pozwala na wykonywania obliczeń z
 pamięcią kwantową 11 kubitów.
 
 \begin{figure}
 \centering
 \includegraphics{google-cloud-ionq-10.2022.png}
-\caption{Informacje o usłudzie dostępu do komputera IonQ z poziomu
+\caption{Informacje o usłudze dostępu do komputera IonQ z poziomu
 Google Cloud console}
 \end{figure}
 
 Usługi zarządzane są w pełni hostowane, zarządzane i obsługiwane przez
-usługodawców. Aby korzystać z usługi konieczna jest rejstracja się u
+usługodawców. Aby korzystać z usługi konieczna jest rejestracja u
 usługodawcy. Natomiast firma Google zajmuje się rozliczeniami kosztów
 korzystania ze sprzętu.
 
@@ -136,7 +137,7 @@ Marketplace.
 
 Firma Xanadu udostępniła swój komputer w czerwcu 2022. Udostępniony
 komputer to Borealis, programowalny fotoniczny komputer kwantowy z 216
-qubitami w stanie ściśniętym. MAszyn ta zostałą wykorzystana do
+kubitami w stanie ściśniętym. Maszyna ta została wykorzystana do
 uzyskania czyli który przewyższa najlepsze klasyczne superkomputery w
 konkretnym zadaniu, dostępny dla ludzi wszędzie poprzez Xanadu Cloud i
 Amazon Braket.
@@ -147,9 +148,9 @@ Amazon Braket.
 \caption{Interfejs użytkownika udostępniany w Xandau Cloud}
 \end{figure}
 
-Xanadau Cloud dostarcza interfejsu opratego o Jupyter Lab. Firma
+Xanadau Cloud dostarcza interfejsu opartego o Jupyter Lab. Firma
 dostarcza również zestawy przykładów oraz tutoriali pozwalających na
-zaznajomienie się z proramowaniem w bibliotece PennyLane.
+zaznajomienie się z programowaniem w bibliotece PennyLane.
 
 \hypertarget{ibm-qunatum}{%
 \subsubsection{IBM Qunatum}\label{ibm-qunatum}}
@@ -169,15 +170,15 @@ Quantum}
 \end{figure}
 
 IBM Quantum pozwala również na zarządzania zasobami komputerowymi
-przypisanymi do danego konta. W tej chili w podstawowoje wersji
-dostępnych jest sześć komputerów o maksymalnej pamięci 7 qubitów. IBM
-udostępnia równiez spejalizowane symulatory pozwalające na testowanie
+przypisanymi do danego konta. W tej chili w podstawowej wersji
+dostępnych jest sześć komputerów o maksymalnej pamięci 7 kubitów. IBM
+udostępnia również specjalizowane symulatory pozwalające na testowanie
 kodu kwantowego w różnych scenariuszach.
 
 \begin{figure}
 \centering
 \includegraphics{ibm-q-resources.png}
-\caption{Zarządzanie zasobami komputerowymi w paneu IBM Quantum}
+\caption{Zarządzanie zasobami komputerowymi w panelu IBM Quantum}
 \end{figure}
 
 \hypertarget{d-wave-systems}{%
@@ -187,9 +188,9 @@ Oprogramowanie Ocean to pakiet narzędzi, które D-Wave Systems udostępnia
 na repozytorium D-Wave GitHub do rozwiązywania trudnych problemów z
 wykorzystaniem komputerów kwantowych.
 
-Dostęp do wyżażacza D-Wave systems jest możliwy poprzez interfejst Leap.
-Interfejs ten zapewnie kontrolę na wykorzystaniem zasobó obliczniowych.
-Dostarcza również środowiska progrmistycznego bazującego na VS Code oraz
+Dostęp do wyżarzacza D-Wave Systems jest możliwy poprzez interfejs Leap.
+Interfejs ten zapewnia kontrolę na wykorzystaniem zasobów obliczeniowych.
+Dostarcza również środowiska programistycznego bazującego na VS Code oraz
 zintegrowanego z GitHub i GitPod.
 
 \begin{figure}
@@ -202,9 +203,9 @@ systemie D-Wave Leap.}
 \hypertarget{ionq}{%
 \subsubsection{IONQ}\label{ionq}}
 
-Firma IonQ, opróc dostępu poprzez Google Cloiud Platfrom, udostępnia
-również narzędzie do kontrolowania kolejki wykonania peocesów na
-maszynie waktowej.
+Firma IonQ, oprócz dostępu poprzez Google Cloud Platfrom, udostępnia
+również narzędzie do kontrolowania kolejki wykonania procesów na
+maszynie kwantowej.
 
 Dodatkowo, możliwe jest uruchamianie zadań na komputerze IonQ z poziomu
 biblioteki Qiskit.
@@ -212,7 +213,7 @@ biblioteki Qiskit.
 \hypertarget{aqt}{%
 \subsubsection{AQT}\label{aqt}}
 
-Firma AQT udostępnia w tej chili symulator pułpki jonowej. Obecnie
+Firma AQT udostępnia w tej chwili symulator pułapki jonowej. Obecnie
 dostępne są idealne i zaszumione symulatory do uruchamiania obwodów
 kwantowych. Trwają prace nad udostępnieniem sprzętu kwantowego.
 

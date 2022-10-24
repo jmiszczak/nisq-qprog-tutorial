@@ -5,8 +5,8 @@
 
 Raport przedstawia zestawienie systemów udostępniających możliwość
 wykonywania obliczeń kwantowych z poziomu chmury obliczeniowej.
-Uwzględnione są rozwiązania poszczególnych firmy produkujących komputery
-kwantowe jak rozwiązania dostawców usług obliczeniowych.
+Uwzględnione są zarówno rozwiązania poszczególnych firmy produkujących komputery
+kwantowe jak i rozwiązania dostawców usług obliczeniowych.
 
 ### Amazon Braket
 
@@ -20,21 +20,23 @@ chmurze obliczeniowej.
 
 ![Koncepcja funkcjonowania dostępu do maszyn kwantwoych w serwisie Amazon Braket](amazon-braket-diagram.png)
 
-W chwili obecnej Amazon Braket udostępnia urządzenia firm D-Wave, ION Q, Oxford Quantum Circuit, Rigetti oraz Xanadu. Każde z tych urządzeń jest zbudowane w opariu o innny zestaw technologi i możliwości programowania.
+W chwili obecnej Amazon Braket udostępnia urządzenia firm D-Wave, ION Q,
+Oxford Quantum Circuit, Rigetti oraz Xanadu. Każde z tych urządzeń jest
+zbudowane w oparciu o inny zestaw technologi i możliwości programowania.
 
-![Urządzenia kwantowe dostępne poprzed interfejs AWS. Stan na październik 2022](amazon-braket-10.0222.png)
+![Urządzenia kwantowe dostępne poprzez interfejs AWS. Stan na październik 2022](amazon-braket-10.0222.png)
 
 ### Google Cloud Platfrom
 
-Google Cloud oferuje dostęp do komputera firmy IonQ w ramach usłudi zarządzanej.
-Udsotępniana maszyna pozwala na wykonywania obliczeń z pamięcią kwantową 11
-kubitów.
+Google Cloud oferuje dostęp do komputera firmy IonQ w ramach usłudi
+zarządzanej. Udostępniana maszyna pozwala na wykonywania obliczeń z
+pamięcią kwantową 11 kubitów.
 
-![Informacje o usłudzie dostępu do komputera IonQ z poziomu Google Cloud
+![Informacje o usłudze dostępu do komputera IonQ z poziomu Google Cloud
 console](google-cloud-ionq-10.2022.png)
 
 Usługi zarządzane są w pełni hostowane, zarządzane i obsługiwane przez
-usługodawców. Aby korzystać z usługi konieczna jest rejstracja się u
+usługodawców. Aby korzystać z usługi konieczna jest rejestracja u
 usługodawcy. Natomiast firma Google zajmuje się rozliczeniami kosztów
 korzystania ze sprzętu.
 
@@ -42,17 +44,18 @@ Usługa ta jest dostępna poprzez wybranie jej z usług Google Cloud Marketplace
 
 ### Xanadu Cloud
 
-Firma Xanadu udostępniła swój komputer w czerwcu 2022.  Udostępniony komputer to
-Borealis, programowalny fotoniczny komputer kwantowy z 216 qubitami w stanie
-ściśniętym. MAszyn ta zostałą wykorzystana do uzyskania  czyli który przewyższa
-najlepsze klasyczne superkomputery w konkretnym zadaniu, dostępny dla ludzi
-wszędzie poprzez Xanadu Cloud i Amazon Braket.
+Firma Xanadu udostępniła swój komputer w czerwcu 2022. Udostępniony
+komputer to Borealis, programowalny fotoniczny komputer kwantowy z 216
+kubitami w stanie ściśniętym. Maszyna ta została wykorzystana do
+uzyskania czyli który przewyższa najlepsze klasyczne superkomputery w
+konkretnym zadaniu, dostępny dla ludzi wszędzie poprzez Xanadu Cloud i
+Amazon Braket.
 
 ![Interfejs użytkownika udostępniany w Xandau Cloud](xanadu-cloud-interface.png)
 
-Xanadau Cloud dostarcza interfejsu opratego o Jupyter Lab. Firma dostarcza
-również zestawy przykładów oraz tutoriali pozwalających na zaznajomienie się z
-proramowaniem w bibliotece PennyLane.
+Xanadau Cloud dostarcza interfejsu opartego o Jupyter Lab. Firma
+dostarcza również zestawy przykładów oraz tutoriali pozwalających na
+zaznajomienie się z programowaniem w bibliotece PennyLane.
 
 ### IBM Qunatum
 
@@ -64,12 +67,14 @@ kwantowych oraz dostęp do interaktywnego podręcznika.
 
 ![Przykład wykorzystania narzędzia Composer w systemie IBM Quantum](ibm-q-composer.png)
 
-IBM Quantum pozwala również na zarządzania zasobami komputerowymi przypisanymi
-do danego konta. W tej chili w podstawowoje wersji dostępnych jest sześć
-komputerów o maksymalnej pamięci 7 qubitów. IBM udostępnia równiez spejalizowane
-symulatory pozwalające na testowanie kodu kwantowego w różnych scenariuszach. 
 
-![Zarządzanie zasobami komputerowymi w paneu IBM Quantum](ibm-q-resources.png)
+IBM Quantum pozwala również na zarządzania zasobami komputerowymi
+przypisanymi do danego konta. W tej chili w podstawowej wersji
+dostępnych jest sześć komputerów o maksymalnej pamięci 7 kubitów. IBM
+udostępnia również specjalizowane symulatory pozwalające na testowanie
+kodu kwantowego w różnych scenariuszach.
+
+![Zarządzanie zasobami komputerowymi w panelu IBM Quantum](ibm-q-resources.png)
 
 ### D-Wave Systems
 
@@ -77,25 +82,25 @@ Oprogramowanie Ocean to pakiet narzędzi, które D-Wave Systems udostępnia na
 repozytorium D-Wave GitHub do rozwiązywania trudnych problemów z wykorzystaniem
 komputerów kwantowych.
 
-Dostęp do wyżażacza D-Wave systems jest możliwy poprzez interfejst Leap.
-Interfejs ten zapewnie kontrolę na wykorzystaniem zasobó obliczniowych.
-Dostarcza również środowiska progrmistycznego bazującego na VS Code oraz
+Dostęp do wyżarzacza D-Wave Systems jest możliwy poprzez interfejs Leap.
+Interfejs ten zapewnia kontrolę na wykorzystaniem zasobów obliczeniowych.
+Dostarcza również środowiska programistycznego bazującego na VS Code oraz
 zintegrowanego z GitHub i GitPod.
 
 ![Widok zarządzania wykorzystaniem czasu obliczeniowego w systemie D-Wave Leap.](d-wave-leap-dashboard.png)
 
 ### IONQ
 
-Firma IonQ, opróc dostępu poprzez Google Cloiud Platfrom, udostępnia również
-narzędzie do kontrolowania kolejki wykonania peocesów na maszynie waktowej.
-
+Firma IonQ, oprócz dostępu poprzez Google Cloud Platfrom, udostępnia
+również narzędzie do kontrolowania kolejki wykonania procesów na
+maszynie kwantowej.
 
 Dodatkowo, możliwe jest uruchamianie zadań na komputerze IonQ z poziomu
 biblioteki Qiskit.
 
 ### AQT
 
-Firma AQT udostępnia w tej chili symulator pułpki jonowej. Obecnie dostępne są
+Firma AQT udostępnia w tej chwili symulator pułapki jonowej. Obecnie dostępne są
 idealne i zaszumione symulatory do uruchamiania obwodów kwantowych. Trwają prace
 nad udostępnieniem sprzętu kwantowego.
 
