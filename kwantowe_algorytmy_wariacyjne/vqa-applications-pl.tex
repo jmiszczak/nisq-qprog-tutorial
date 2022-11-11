@@ -1,0 +1,127 @@
+% !TeX spellcheck = pl_PL
+\documentclass[tikz,12pt,border=0pt]{{standalone}}
+
+\usepackage{polski}
+\usetikzlibrary{arrows,positioning} 
+\tikzset{
+    mainType/.style={
+		rectangle,
+		rounded corners,
+		draw=black, ultra thick,
+		text width=6.5em,
+		minimum height=2em,
+		text centered,
+		font=\bfseries
+	},
+    subType/.style={
+		rectangle,
+%		rounded corners,
+		draw=black, thick,
+		text width=7em,
+		minimum height=1em,
+		text centered,
+		font=\bf
+	},
+	    algEx/.style={
+		rectangle,
+		draw=none,
+		text width=9em,
+%		minimum height=1em,
+		text centered,
+		font=\bf
+	},
+}
+
+\begin{document}
+
+\begin{tikzpicture}[node distance=1cm, auto,inner sep=10pt]
+
+
+\node[mainType,inner sep=15pt] (vqa) {\bf Wariacyjne\\algorytmy\\kwantowe};
+
+%%%%%%%%%%%
+
+\node[rectangle,draw = lightgray,rounded corners,
+text = olive,
+fill = orange!30,
+minimum width = 7.3cm, 
+minimum height = 3.2cm] (rmath) at (-6,2.9) {};
+
+
+\node[subType, above left=1.2cm of vqa,draw=orange] (qc) {Obliczenia\\kwantowe};
+
+\node[algEx, above left=-0.8cm of qc] {kompilacja kwantowa};
+
+\node[algEx, below  left=-1.cm of qc] {kwantowa\\korekcja błędów};
+
+
+%%%%%%%%%%%
+
+\node[rectangle, draw = lightgray,rounded corners,
+text = olive,
+fill = green!30,
+minimum width = 11cm, 
+minimum height = 2.8cm] (rmath) at (4.8,3) {};
+
+\node[subType,above right=2cm of vqa, draw=green](math) {Matematyka\\stosowana};
+
+\node[algEx, left=-0.2cm of math] {optymalizacja kombinatoryczna};
+
+\node[algEx, right=-0.6cm of math] {układy równań};
+
+\node[algEx, below=-0.0cm of math] {faktoryzacja};
+
+
+%%%%%%%%%%%
+\node[rectangle, draw = lightgray,rounded corners,
+fill = blue!20,
+minimum width = 12.4cm, 
+minimum height = 2.5cm] (rml) at (0.4,-3.4) {};
+
+
+\node[subType, below=1cm of vqa, draw=blue,] (newt) {Nowe\\technologie};
+
+
+\node[algEx, left=-.5cm of newt,text width=10em,] {metrologia kwantowa};
+
+\node[algEx, right=-0.3cm of newt,text width=12em,] {badania podstawowe};
+
+\node[algEx, below=-0.2cm of newt,text width=12em,] {informacja kwantowa};
+
+%%%%%%%%%%%
+\node[rectangle,draw=lightgray,rounded corners,
+fill = red!20,
+minimum width = 7cm, 
+minimum height = 3cm] (rml) at (-5.7,-0.4) {};
+
+\node[subType,left=1cm of vqa, draw=red] (newt) {Znajdowanie stanu\\ podstawowego};
+
+\node[algEx, left=-0.8cm of newt] {chemia\\kwantowa};
+
+%\node[algEx, below right=-0.8cm of newt,color=blue] {quantum foundations};
+
+\node[algEx, below=-0.0cm of newt,text width=17em,] {faza skondensowana};
+
+
+%%%%%%%%%%%
+\node[rectangle,draw = lightgray,rounded corners,
+fill = purple!30,
+minimum width = 7.5cm, 
+minimum height = 2.5cm] (rml) at (6.3,-0.2) {};
+
+\node[subType,right=1.25cm of vqa,draw=purple]  (ml) {Uczenie\\ maszynowe};
+
+\node[algEx,  below=-0.2cm of ml]  {klasyfikatory};
+
+%\node[algEx, right=-0.8cm of ml,color=purple] {state classification};
+
+\node[algEx,  right=-0.7cm of ml] (gm) {modele\\generatywne};
+
+%\draw [black] (ml) -- (gm);
+ 
+%\node[subType,below right=0.5cm of vqa, fill=purple!25,]  (math) {a};
+
+	
+\end{tikzpicture}
+
+\end{document}
