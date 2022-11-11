@@ -3,12 +3,11 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[a4paper,11pt
-]{article}
+\documentclass[a4paper,11pt]{article}
 \usepackage{times,fullpage,polski}
 \usepackage{amssymb,amsmath}
 
-  \usepackage[T1]{fontenc}
+ \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{textcomp} % provide euro and other symbols
 
@@ -70,10 +69,10 @@
 \begin{document}
 
 
-\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Podstawowe elementy i rozwiązania programowe}}
+\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Podstawowe elementy konstrukcji i potencjalne zastosowania}}
 
 \author{Jarosław Miszczak}
-\date{04/11/2022}
+\date{11/11/2022}
 
 \maketitle
 
@@ -87,7 +86,24 @@ Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami waria
 \section{Wprowadzenie}\label{wprowadzenie}}
 %-------------------------------------------------------------------------------
 
+ Komputery które mogłyby wykonywać algorytmy numeryczne typu algorytmu Shora wymagają dużej ilości pamięci kwantowej odpornej na błędy \ang{fault-tolerant quantum computing} i w chwili obecnej uważa się, iż budowa takich komputerów nie będzie możliwa w najbliższej przyszłości. Natomiast komputer które są dostępne obecnie i będą dostępne w ciągu najbliższych lat będą dawały dostęp do pamięci rzędu kilkuset kubitów, a dodatkowo obliczenia kwantowe realizowane na nich będą wymagały radzenia sobie z szumem kwantowym. W związku z tym konieczne jest opracowanie algorytmów kwantowych, które będą konstruowane z myślą o tego typu urządzeniach, a ich zasada działania będzie uwzględniała ich ograniczenia.
+ 
+ Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokeij klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest badzo podobna.
 
+\newpage 
+
+%-------------------------------------------------------------------------------
+\hypertarget{zasada-dzialania}{%
+	\section{Zasada działania}\label{zasada-dzialania}}
+%-------------------------------------------------------------------------------
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{vqe-pl.pdf}
+	\caption{Koncepcja działania kwantowego algorytmu wariacyjnego}
+\end{figure}
+
+\newpage 
 
 %-------------------------------------------------------------------------------
 \hypertarget{funkcja-kosztu}{%
@@ -100,21 +116,38 @@ Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest określeni
 \end{equation}
 gdzie $f$ to dowolna funkcja, $\rho_k$ to zestaw stanów wejściowych, a $O_k$ to obserwable.
 
-Funkcja kosztu powinna spełniać następujące warunki
+Aby funkcja kosztu była dobra do wykorzystania w wariacyjnym algorytmie kwantowym, powinna spełniać następujące warunki:
 \begin{itemize}
-	\item wierność
-	\item wydajność estymacji
-	\item znaczenie operacyjne
-	\item trenowalność
+	\item wierność -- 
+	\item wydajność estymacji -- 
+	\item znaczenie operacyjne --
+	\item trenowalność -- 
 \end{itemize}
+
+
+\paragraph{Wierność}
+\paragraph{Wydajność estymacji}
+\paragraph{Znaczenie operacyjne}
+\paragraph{Trenowalność}
+
+\newpage 
 
 %-------------------------------------------------------------------------------
 \hypertarget{typy-ansatzow}{%
-	\section{Typy ansatzow}\label{typy-ansatzow}}
+	\section{Ansatz}\label{typy-ansatzow}}
 %-------------------------------------------------------------------------------
 
-
 Jednym z kluczowych elementów projektowanie algorytmu opartego na metodzie wariacyjnej jest dobranie odpowiedniego schematu obwodu, którego parametry będą poddawane procesowi optymalizacji. Schemat ten nazywany jest \emph{ansatzem}.
+
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{ansatz.pdf}
+	\caption{Zasada konstrukcji ansatzow w wariacyjnych algorytmach kwantowych}
+\end{figure}
+
+
+
 
 
 
@@ -143,16 +176,27 @@ Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternatin operator anzatz
 \subsection{Wariacyjny anzatz hamiltonowski}
 %-------------------------------------------------------------------------------
 
+
+\newpage
 %-------------------------------------------------------------------------------
 \hypertarget{optymalizacja}{%
 	\section{Optymalizacja}\label{optymalizacja}}
 %-------------------------------------------------------------------------------
 
+
+
+\newpage 
 %-------------------------------------------------------------------------------
 \hypertarget{zastosowania}{%
 	\section{Zastosowania}\label{zastosowania}}
 %-------------------------------------------------------------------------------
 
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\textwidth]{vqa-applications-pl}
+	\caption{Potencjalne dziedziny w których zastosowanie wariacyjnych algorytmów kwantowych może prowadzić do uzyskania przewagi kwantowej.}
+\end{figure}
 
 %-------------------------------------------------------------------------------
 \hypertarget{matematyczne}{%
@@ -160,16 +204,13 @@ Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternatin operator anzatz
 %-------------------------------------------------------------------------------
 
 
-\begin{figure}
-\centering
-\includegraphics{vqe-pl.pdf}
-\caption{Koncepcja działania kwantowego algorytmu wariacyjnego}
-\end{figure}
 
 
+
+\newpage 
 
 \hypertarget{literatura}{%
-\paragraph{Literatura}\label{literatura}}
+\section*{Literatura}\label{literatura}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
