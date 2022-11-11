@@ -69,7 +69,7 @@
 \begin{document}
 
 
-\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Podstawowe elementy konstrukcji i potencjalne zastosowania}}
+\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Podstawowe zasady konstrukcji}}
 
 \author{Jarosław Miszczak}
 \date{11/11/2022}
@@ -77,7 +77,7 @@
 \maketitle
 
 \begin{abstract}
-Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami wariacyjnymi. Omówione są m.in. konstrukcja funkcji kosztu, typy ansatzów oraz proces optymalizacji. Przedstawione są również wybrane zastosowanie tej rodziny algorytmów.
+Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami wariacyjnymi. Omówione są m.in. konstrukcja funkcji kosztu, typy ansatzów oraz proces optymalizacji.
 \end{abstract}
 
 
@@ -88,7 +88,7 @@ Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami waria
 
  Komputery które mogłyby wykonywać algorytmy numeryczne typu algorytmu Shora wymagają dużej ilości pamięci kwantowej odpornej na błędy \ang{fault-tolerant quantum computing} i w chwili obecnej uważa się, iż budowa takich komputerów nie będzie możliwa w najbliższej przyszłości. Natomiast komputer które są dostępne obecnie i będą dostępne w ciągu najbliższych lat będą dawały dostęp do pamięci rzędu kilkuset kubitów, a dodatkowo obliczenia kwantowe realizowane na nich będą wymagały radzenia sobie z szumem kwantowym. W związku z tym konieczne jest opracowanie algorytmów kwantowych, które będą konstruowane z myślą o tego typu urządzeniach, a ich zasada działania będzie uwzględniała ich ograniczenia.
  
- Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokeij klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest badzo podobna.
+ Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokeij klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest bardzo podobna.
 
 \newpage 
 
@@ -110,7 +110,7 @@ Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami waria
 	\section{Funkcja kosztu}\label{funkcja-kosztu}}
 %-------------------------------------------------------------------------------
 
-Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest określenie funkcji kosztu. Podobnie jak w przypadku klasycznego treningu modelu, funkcja kosztu mapuje wartości parametrów $\mathbf{\theta}$ na zbiór liczb rzeczywistych. W ogólności funkcja kosztu może być wyrażona w postaci
+Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest określenie funkcji kosztu. Podobnie jak w przypadku klasycznego treningu modelu, funkcja kosztu mapuje wartości parametrów $\mathbf{\theta}$ na zbiór liczb rzeczywistych. Funkcja kosztów jest skonstruowana tak, że znalezienie parametrów ansatzu, które minimalizują jej wartość, rozwiązuje interesujący nas problem.  W ogólności funkcja kosztu może być wyrażona w postaci
 \begin{equation}
 	C(\theta)  = f(\{\rho_k\}, \{O_k\}, U(\theta))
 \end{equation}
@@ -147,7 +147,7 @@ Jednym z kluczowych elementów projektowanie algorytmu opartego na metodzie wari
 \end{figure}
 
 
-
+Struktura ansatza zależy od problemu który mamy zadanie rozwiązać. W związku z tym możemy wyróżnić ansatze inspirowane problemowo.
 
 
 
@@ -155,14 +155,21 @@ Jednym z kluczowych elementów projektowanie algorytmu opartego na metodzie wari
 \subsection{Ansatz wydajny sprzętowo}
 %-------------------------------------------------------------------------------
 
-Ansatz wydajny sprzętowo \ang{hardware efficient ansatz} to ogólna nazwa rodziny ansatzów w konstrukcji których wykorzystywana jest wiedza na temat architektury komputera kwantowego na którym będzie realizowany algorytm.
+Ansatz wydajny sprzętowo \ang{hardware efficient ansatz -- HEA} to ogólna nazwa rodziny ansatzów w konstrukcji których wykorzystywana jest wiedza na temat architektury komputera kwantowego na którym będzie realizowany algorytm. Wiedza ta pozwala na zminimalizowanie głębokości obwodów dla danej architektury komputera kwantowego. Ponieważ zmniejszenie głębokości przekłada się na ograniczenie wpływu szumu kwantowego na jakość wykonywanych obliczeń, to podejście jest ważne jeżeli celem jest jak najwierniejsze wykonanie założonego zestawu operacji kwantowych.
 
+W przypadku tego typu ansatzów pojawiają się często problemy ze zbieżnością, zwłaszcza przy losowej inicjalizacji parametrów.
+
+%-------------------------------------------------------------------------------
+\subsection{Warstwowy ansatz wydajny sprzętowo}
+%-------------------------------------------------------------------------------
+
+W przypadku warstwowego ansatz wydajnego sprzętowo \ang{layered hardware efficient ansatz -- LHEA} dodadkowo zakłada się, iż operacje wykonywane są naprzemiennie na kubitów. Prowadzi to do struktury przypominającej układ cegieł.  
 
 %-------------------------------------------------------------------------------
 \subsection{Kwantowy naprzemienny ansatz operatorowy}
 %-------------------------------------------------------------------------------
 
-Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternatin operator anzatz} bazuje na strukturze produkowej podyktowanej wykorzystaniem tzw. troteryzacji. Troteryzacja to metoda przybliżania wartości $e^{Ht}$ jako
+Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternating operator anzatz} bazuje na strukturze produktowej podyktowanej wykorzystaniem tzw. troteryzacji. Troteryzacja to metoda przybliżania wartości $e^{Ht}$ jako
 \begin{equation}
 	e^{Ht} \approx \left(e^{\frac{Ht}{n}}\right)^n.
 \end{equation}
@@ -184,24 +191,11 @@ Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternatin operator anzatz
 %-------------------------------------------------------------------------------
 
 
+Problem optymalizacji jest kluczowy w trenowaniu wariacyjnych algorytmów kwantowych. Wykazano, że klasyczne problemy optymalizacyjne odpowiadające VQA i QAOA są NP-trudne. Co więcej, pokazano, że dla każdego algorytmu działającego w czasie wielomianowym istnieją instancje, dla których błąd względny wynikający z klasycznego problemu optymalizacyjnego może być dowolnie duży przy założeniu $\mathbf{P} \not= \mathbf{NP}$. Wskazuje to, że klasyczna optymalizacja w wariacyjnych algorytmach kwantowych jest fundamentalnie trudna, a nie tylko dziedziczy trudność po problemie znajdowania stanu podstawowego.
+
 
 \newpage 
-%-------------------------------------------------------------------------------
-\hypertarget{zastosowania}{%
-	\section{Zastosowania}\label{zastosowania}}
-%-------------------------------------------------------------------------------
 
-
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=\textwidth]{vqa-applications-pl}
-	\caption{Potencjalne dziedziny w których zastosowanie wariacyjnych algorytmów kwantowych może prowadzić do uzyskania przewagi kwantowej.}
-\end{figure}
-
-%-------------------------------------------------------------------------------
-\hypertarget{matematyczne}{%
-	\subsection{Problemy obliczeniowe}\label{matematyczne}}
-%-------------------------------------------------------------------------------
 
 
 
@@ -220,11 +214,14 @@ Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternatin operator anzatz
 
 \item Tilly, J., Chen, H., Cao, S., Picozzi, D., Setia, K., Li, Y., Grant, E., Wossnig, L., Rungger, I., Booth, G.H. and Tennyson, J., 2022. The variational quantum eigensolver: a review of methods and best practices. Physics Reports, 986, pp.1-128. \url{https://doi.org/10.1016/j.physrep.2022.08.003}
 
-\item \url{https://pennylane.ai/}
+\item Bittel, L. and Kliesch, M., 2021. Training variational quantum algorithms is np-hard. Physical Review Letters, 127(12), p.120502. \url{https://doi.org/10.1103/PhysRevLett.127.120502}
 
-\item \url{https://qmlsys.mit.edu/}
 
-\item 
+\item Bravo-Prieto, C., LaRose, R., Cerezo, M., Subasi, Y., Cincio, L. and Coles, P.J., 2019. Variational quantum linear solver. LA-UR-19-29101, arXiv:1909.05820. \url{https://doi.org/10.48550/arXiv.1909.05820}
+
+
+
+
 \end{enumerate}
 
 \end{document}
