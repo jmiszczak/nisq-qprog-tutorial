@@ -1,70 +1,31 @@
 % !TeX spellcheck = pl_PL
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[a4paper,11pt]{article}
-\usepackage{times,fullpage,polski}
-\usepackage{amssymb,amsmath}
 
- \usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{polski}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{textcomp} % provide euro and other symbols
+\usepackage{times}
 
-
-%\usepackage{ifxetex,ifluatex}
-%\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-%  \usepackage[T1]{fontenc}
-%  \usepackage[utf8]{inputenc}
-%  \usepackage{textcomp} % provide euro and other symbols
-%\else % if luatex or xetex
-%  \usepackage{unicode-math}
-%  \defaultfontfeatures{Scale=MatchLowercase}
-%  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-%\fi
-%% Use upquote if available, for straight quotes in verbatim environments
-%\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-%\IfFileExists{microtype.sty}{% use microtype if available
-%  \usepackage[]{microtype}
-%  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-%}{}
-%\makeatletter
-%\@ifundefined{KOMAClassName}{% if non-KOMA class
-%  \IfFileExists{parskip.sty}{%
-%    \usepackage{parskip}
-%  }{% else
-%    \setlength{\parindent}{0pt}
-%    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-%}{% if KOMA class
-%  \KOMAoptions{parskip=half}}
-%\makeatother
-%\usepackage{xcolor}
-%\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks}
-\urlstyle{same} % disable monospaced font for URLs
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{textcomp}
 \usepackage{graphicx}
-%\makeatletter
-%\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-%\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-%\makeatother
-%% Scale images if necessary, so that they will not overflow the page
-%% margins by default, and it is still possible to overwrite the defaults
-%% using explicit options in \includegraphics[width, height, ...]{}
-%\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-%% Set default figure placement to htbp
-%\makeatletter
-%\def\fps@figure{htbp}
-%\makeatother
-%\setlength{\emergencystretch}{3em} % prevent overfull lines
-%\providecommand{\tightlist}{%
-%  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-%\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\urlstyle{same} 
 
 \newcommand{\ang}[1]{(ang. \emph{#1})}
+\newcommand{\ket}[1]{| #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ketbra}[2]{| #1 \rangle \langle #2 |}
+\newcommand{\braket}[2]{\bra{#2}{#1}\rangle}
+\newcommand{\proj}[1]{| #1 \rangle \langle #1 |}
 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
 
 \begin{document}
 
@@ -86,31 +47,64 @@ Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami waria
 \section{Wprowadzenie}\label{wprowadzenie}}
 %-------------------------------------------------------------------------------
 
- Komputery które mogłyby wykonywać algorytmy numeryczne typu algorytmu Shora wymagają dużej ilości pamięci kwantowej odpornej na błędy \ang{fault-tolerant quantum computing} i w chwili obecnej uważa się, iż budowa takich komputerów nie będzie możliwa w najbliższej przyszłości. Natomiast komputer które są dostępne obecnie i będą dostępne w ciągu najbliższych lat będą dawały dostęp do pamięci rzędu kilkuset kubitów, a dodatkowo obliczenia kwantowe realizowane na nich będą wymagały radzenia sobie z szumem kwantowym. W związku z tym konieczne jest opracowanie algorytmów kwantowych, które będą konstruowane z myślą o tego typu urządzeniach, a ich zasada działania będzie uwzględniała ich ograniczenia.
+Komputery które mogłyby wykonywać algorytmy numeryczne typu algorytmu Shora wymagają dużej ilości pamięci kwantowej odpornej na błędy \ang{fault-tolerant quantum computing} i w chwili obecnej uważa się, iż budowa takich komputerów nie będzie możliwa w najbliższej przyszłości. Natomiast komputer które są dostępne obecnie i będą dostępne w ciągu najbliższych lat będą dawały dostęp do pamięci rzędu kilkuset kubitów, a dodatkowo obliczenia kwantowe realizowane na nich będą wymagały radzenia sobie z szumem kwantowym. 
  
- Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokeij klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest bardzo podobna.
+Obecnie kluczowym pytaniem technologicznym jest to, jak najlepiej wykorzystać  urządzenia, aby osiągnąć przewagę kwantową. Każda taka strategia musi uwzględniać ograniczoną liczbę qubitów, ograniczoną łączność qubitów oraz koherentne i niekoherentne błędy, które ograniczają głębokość obwodu kwantowego. W związku z tym konieczne jest opracowanie algorytmów kwantowych, które będą konstruowane z myślą o tego typu urządzeniach, a ich zasady działania będą uwzględniała ograniczenia takich urządzeń.
+ 
+Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokiej klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest bardzo podobna.
 
-\newpage 
+Dotychczas zaproponowane zastosowania wariacyjnych algorytmów kwantowych obejmuję m.in. wykorzystanie w zakresie matematyki stosowanej do rozwiązywanie układów równań, rozwiązywanie problemów optymalizacji kombinatorycznej, znajdowanie stanu podstawowego układów kwantowych i symulacje takich układów. Algorytmy tego typu zastosowano również do wspomagania rozwoju technologii kwantowych, m.in w problemie kompilacji obwodów kwantowych oraz do tworzenia nowych eksperymentów fizycznych, oraz do badań związanych z zagadnieniami z zakresu podstaw mechaniki kwantowej. Dodatkowo, ze względu na analogię pomiędzy działaniem wariacyjnych algorytmów kwantowych, a procesem uczenia modeli w uczeniu maszynowym, pojawiło się wiele ideii na wykorzystanie tych algorytmów jako elementów składowych poprawiających działanie metod uczenia maszynowego, m.in. w modelach generatywnych lub w postaci klasyfikatorów.
+
+Wszystkie proponowane zastosowanie są rozwijane z nadzieję na uzyskanie przewagi kwantowej \ang{quantum adventage}, tj. sytuacji, w której komputer kwantowy może posłużyć do zwiększenia wydajności rozwiązania problemu. która jest nieosiągalna dla komputerów klasycznych.
+
+
+%\newpage 
 
 %-------------------------------------------------------------------------------
-\hypertarget{zasada-dzialania}{%
-	\section{Zasada działania}\label{zasada-dzialania}}
+\section{Zasada działania}\label{zasada-dzialania}
 %-------------------------------------------------------------------------------
 
-\begin{figure}[h!]
+Teoretyczną podstawą działania wariacyjnych algorytmów kwantowych jest metoda Ritza, nazywana czasem metodą Rayleigha-Ritza, która służy do przybliżonego rozwiązywania zagadnień wariacyjnych. Metoda ta optymalizuje ograniczenie górne dla minimalnej wartości własnej obserwabli dla zadanej funkcji próbnej. Dla zadanego Hamiltonianu $H$ i wybranej funkcji $\ket{\psi}$ ogranicznei to spełnia nierówność
+\begin{equation}
+	E_0 = \frac{\bra{\psi} H \ket{\psi}}{\braket{\psi}{\psi}}
+\end{equation}
+gdzie $E_0$ to energia stanu podstawowego $H$. Zadaniem wariacyjnego algorytmu kwantowego jest wyliczenie parametryzacji  $\ket{\psi}$ która daje jak najlepsze ograniczenie.
+
+W przypadku wyliczenia ograniczenia górnego energii stanu podstawowego na komputerze kwantowym funkcja próbna jest przedstawiana jako wynik działania operacji unitarnej, 
+\begin{equation}
+	\ket{\psi} = U(\theta) \ket{\phi_0},
+\end{equation}
+gdzie $\theta$ jest zestawem parametrów, $\theta\in(-\pi,\pi]$, a stan początkowy $\ket{\phi_0}$ jest zwykle postaci $\ket{\phi_0}=\ket{0}^N$. Ponieważ tak zadana funkcja $\ket{\psi}$ jest znormalizowana, zadanie optymalizacyjne możemy zapisać jako
+\begin{equation}
+E_{VQE} = \min_\theta \bra{0} U^\dagger(\theta) H U(\theta)\ket{0},
+\end{equation}
+a wyrażenie to jest określane funkcją kosztu w wariacyjnym algorytmie kwantowym.
+
+\begin{figure}[ht!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{vqe-pl.pdf}
-	\caption{Koncepcja działania kwantowego algorytmu wariacyjnego}
+	\caption{Koncepcja działania kwantowego algorytmu wariacyjnego.}
+	\label{fig:koncepcja-vqe}
 \end{figure}
 
-\newpage 
-
+Obserwable które można zrealizować na komputerze kwantowym są produktami tensorowymi operatorów Pauliego. Zatem Hamiltonian może być zapisany jako
+\begin{equation}
+	H = \sum_{i=1}^K \alpha_i P_i,
+\end{equation}
+gdzie $P_i\in \{I,X,Y,Z\}^N$, dla $N$ kubitów wykorzystanych w problemie, $\alpha_i$ to wagi kolejnych składników, a $K$ to liczba ciągów Pauliego w sumie.  W ten sposób otrzymujemy hybrydowe wyrażenia na problem optymalizacyjny
+\begin{equation}
+	E_{VQE} =  \min_\theta \sum_{i=1}^K \alpha_i  \bra{0} U^\dagger(\theta) P_i U(\theta)\ket{0},
+\end{equation}	
+gdzie obliczenia poszczególnych energii składowych $\langle H_i \rangle$, pochodzące z komputera kwantowego, są sumowane na komputerze klasycznym, co ilustruje Rys.~\ref{fig:koncepcja-vqe}.
 %-------------------------------------------------------------------------------
 \hypertarget{funkcja-kosztu}{%
 	\section{Funkcja kosztu}\label{funkcja-kosztu}}
 %-------------------------------------------------------------------------------
 
-Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest określenie funkcji kosztu. Podobnie jak w przypadku klasycznego treningu modelu, funkcja kosztu mapuje wartości parametrów $\mathbf{\theta}$ na zbiór liczb rzeczywistych. Funkcja kosztów jest skonstruowana tak, że znalezienie parametrów ansatzu, które minimalizują jej wartość, rozwiązuje interesujący nas problem.  W ogólności funkcja kosztu może być wyrażona w postaci
+Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest zapisanie rozwiązywanego problemu poprzez określenie funkcji kosztu, $C$. Podobnie jak w przypadku klasycznego treningu modelu, funkcja kosztu mapuje wartości parametrów $\mathbf{\theta}$ na zbiór liczb rzeczywistych, $C(\theta)\mapsto \R$
+
+
+Funkcja koszu jest skonstruowana tak, że znalezienie parametrów ansatzu, które minimalizują jej wartość, rozwiązuje interesujący nas problem.  W ogólności funkcja kosztu może być wyrażona w postaci
 \begin{equation}
 	C(\theta)  = f(\{\rho_k\}, \{O_k\}, U(\theta))
 \end{equation}
@@ -145,6 +139,8 @@ Jednym z kluczowych elementów projektowanie algorytmu opartego na metodzie wari
 	\includegraphics[width=0.5\textwidth]{ansatz.pdf}
 	\caption{Zasada konstrukcji ansatzow w wariacyjnych algorytmach kwantowych}
 \end{figure}
+
+
 
 
 Struktura ansatza zależy od problemu który mamy zadanie rozwiązać. W związku z tym możemy wyróżnić ansatze inspirowane problemowo.
