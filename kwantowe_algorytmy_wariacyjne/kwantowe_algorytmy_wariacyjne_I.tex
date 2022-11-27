@@ -54,7 +54,7 @@ Obecnie kluczowym pytaniem technologicznym jest to, jak najlepiej wykorzystać  
  
 Wariacyjne algorytmy kwantowe \ang{Variational Quantum Algorithms -- VQA} stanowią główny trend w rozwoju algorytmów dla takich małych, zaszumionych komputerów najbliższej przyszłości \ang{Noisy Intermediate-Scale Quantum - NISQ}. Algorytmy tego dostarczają sposobu budowania rozwiązań dla szerokiej klasy problemów. Mogą być zatem dostosowane do różnych zastosowań, przy czym podstawowa struktura wszystkich tak zbudowanych algorytmów jest bardzo podobna.
 
-Dotychczas zaproponowane zastosowania wariacyjnych algorytmów kwantowych obejmuję m.in. wykorzystanie w zakresie matematyki stosowanej do rozwiązywanie układów równań, rozwiązywanie problemów optymalizacji kombinatorycznej, znajdowanie stanu podstawowego układów kwantowych i symulacje takich układów. Algorytmy tego typu zastosowano również do wspomagania rozwoju technologii kwantowych, m.in w problemie kompilacji obwodów kwantowych oraz do tworzenia nowych eksperymentów fizycznych, oraz do badań związanych z zagadnieniami z zakresu podstaw mechaniki kwantowej. Dodatkowo, ze względu na analogię pomiędzy działaniem wariacyjnych algorytmów kwantowych, a procesem uczenia modeli w uczeniu maszynowym, pojawiło się wiele ideii na wykorzystanie tych algorytmów jako elementów składowych poprawiających działanie metod uczenia maszynowego, m.in. w modelach generatywnych lub w postaci klasyfikatorów.
+Dotychczas zaproponowane zastosowania wariacyjnych algorytmów kwantowych obejmuję m.in. wykorzystanie w zakresie matematyki stosowanej do rozwiązywanie układów równań, rozwiązywanie problemów optymalizacji kombinatorycznej, znajdowanie stanu podstawowego układów kwantowych i symulacje takich układów. Algorytmy tego typu zastosowano również do wspomagania rozwoju technologii kwantowych, m.in w problemie kompilacji obwodów kwantowych oraz do tworzenia nowych eksperymentów fizycznych, oraz do badań związanych z zagadnieniami z zakresu podstaw mechaniki kwantowej. Dodatkowo, ze względu na analogię pomiędzy działaniem wariacyjnych algorytmów kwantowych, a procesem uczenia modeli w uczeniu maszynowym, pojawiło się wiele idei na wykorzystanie tych algorytmów jako elementów składowych poprawiających działanie metod uczenia maszynowego, m.in. w modelach generatywnych lub w postaci klasyfikatorów.
 
 Wszystkie proponowane zastosowanie są rozwijane z nadzieję na uzyskanie przewagi kwantowej \ang{quantum adventage}, tj. sytuacji, w której komputer kwantowy może posłużyć do zwiększenia wydajności rozwiązania problemu. która jest nieosiągalna dla komputerów klasycznych.
 
@@ -65,7 +65,7 @@ Wszystkie proponowane zastosowanie są rozwijane z nadzieję na uzyskanie przewa
 \section{Zasada działania}\label{zasada-dzialania}
 %-------------------------------------------------------------------------------
 
-Teoretyczną podstawą działania wariacyjnych algorytmów kwantowych jest metoda Ritza, nazywana czasem metodą Rayleigha-Ritza, która służy do przybliżonego rozwiązywania zagadnień wariacyjnych. Metoda ta optymalizuje ograniczenie górne dla minimalnej wartości własnej obserwabli dla zadanej funkcji próbnej. Dla zadanego Hamiltonianu $H$ i wybranej funkcji $\ket{\psi}$ ogranicznei to spełnia nierówność
+Teoretyczną podstawą działania wariacyjnych algorytmów kwantowych jest metoda Ritza, nazywana czasem metodą Rayleigha-Ritza, która służy do przybliżonego rozwiązywania zagadnień wariacyjnych. Metoda ta optymalizuje ograniczenie górne dla minimalnej wartości własnej obserwabli dla zadanej funkcji próbnej. Dla zadanego Hamiltonianu $H$ i wybranej funkcji $\ket{\psi}$ ograniczenie to spełnia nierówność
 \begin{equation}
 	E_0 = \frac{\bra{\psi} H \ket{\psi}}{\braket{\psi}{\psi}},
 \end{equation}
@@ -164,7 +164,7 @@ Ansatz wydajny sprzętowo \ang{hardware efficient ansatz -- HEA} to ogólna nazw
 \subsection{Warstwowy ansatz wydajny sprzętowo}
 %-------------------------------------------------------------------------------
 
-W przypadku warstwowego ansatz wydajnego sprzętowo \ang{layered hardware efficient ansatz -- LHEA} dodadkowo zakłada się, iż operacje wykonywane są naprzemiennie na kubitów. Prowadzi to do struktury przypominającej układ cegieł.  
+W przypadku warstwowego ansatz wydajnego sprzętowo \ang{layered hardware efficient ansatz -- LHEA} dodatkowo zakłada się, iż operacje wykonywane są naprzemiennie na kubitów. Prowadzi to do struktury przypominającej układ cegieł.  
 
 %-------------------------------------------------------------------------------
 \subsection{Kwantowy naprzemienny ansatz operatorowy}
@@ -196,13 +196,13 @@ gdzie $T = \sum_k T_k$, a operatory $T_k$ to operatory wzbudzeń. W wersji SDUCC
 \end{eqnarray}
 gdzie $a^{\dagger}_i$ oraz $a^{\phantom\dagger}_j$ to fermionowe operatory kreacji i anihiliacji.
 
-Implementacja tego ansatdzu na komputerze kwantowym wymaga wykorzystania transformacji Jordana-Wignera lub transformacji Braviyego-Kitaeva do mapowania operatorów fermionowych na operatory spinowe.
+Implementacja tego ansatzu na komputerze kwantowym wymaga wykorzystania transformacji Jordana-Wignera lub transformacji Braviyego-Kitaeva do mapowania operatorów fermionowych na operatory spinowe.
 
 %-------------------------------------------------------------------------------
 \subsection{Wariacyjny anzatz hamiltonowski}
 %-------------------------------------------------------------------------------
 
-Wariacyjny anzatz hamiltonowski \ang{Hamiltonian Variational Ansatz -- HVA} jest -- podobnie jako QAOA -- ansatzem bazującym na troteryzacji przygotowania stanu. W tym wypadku każdy krok odpowiada odpowiada warstwie ansatzu, co prowadzi do postaci
+Wariacyjny ansatz hamiltonowski \ang{Hamiltonian Variational Ansatz -- HVA} jest -- podobnie jako QAOA -- ansatzem bazującym na troteryzacji przygotowania stanu. W tym wypadku każdy krok odpowiada odpowiada warstwie ansatzu, co prowadzi do postaci
 \begin{equation}
 	U(\theta)  = \prod_i \left( \prod_j e^{-\theta_{i,j} H_j} \right)
 \end{equation}
