@@ -22,6 +22,7 @@
 \newcommand{\ketbra}[2]{| #1 \rangle \langle #2 |}
 \newcommand{\braket}[2]{\bra{#2}{#1}\rangle}
 \newcommand{\proj}[1]{| #1 \rangle \langle #1 |}
+\newcommand{\tr}[1]{\ensuremath{\mathrm{Tr} #1}}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -38,7 +39,7 @@
 \maketitle
 
 \begin{abstract}
-Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami wariacyjnymi. Omówione są m.in. konstrukcja funkcji kosztu, typy ansatzów oraz proces optymalizacji.
+Raport przedstawia podstawowe koncepcje związane z kwantowymi algorytmami wariacyjnymi. Omówione jest zasada działania algorytmów wariacyjnych, zasada konstrukcja i pożądane własności funkcji kosztu, typy ansatzów oraz proces optymalizacji.
 \end{abstract}
 
 
@@ -66,7 +67,7 @@ Wszystkie proponowane zastosowanie są rozwijane z nadzieję na uzyskanie przewa
 
 Teoretyczną podstawą działania wariacyjnych algorytmów kwantowych jest metoda Ritza, nazywana czasem metodą Rayleigha-Ritza, która służy do przybliżonego rozwiązywania zagadnień wariacyjnych. Metoda ta optymalizuje ograniczenie górne dla minimalnej wartości własnej obserwabli dla zadanej funkcji próbnej. Dla zadanego Hamiltonianu $H$ i wybranej funkcji $\ket{\psi}$ ogranicznei to spełnia nierówność
 \begin{equation}
-	E_0 = \frac{\bra{\psi} H \ket{\psi}}{\braket{\psi}{\psi}}
+	E_0 = \frac{\bra{\psi} H \ket{\psi}}{\braket{\psi}{\psi}},
 \end{equation}
 gdzie $E_0$ to energia stanu podstawowego $H$. Zadaniem wariacyjnego algorytmu kwantowego jest wyliczenie parametryzacji  $\ket{\psi}$ która daje jak najlepsze ograniczenie.
 
@@ -77,13 +78,14 @@ W przypadku wyliczenia ograniczenia górnego energii stanu podstawowego na kompu
 gdzie $\theta$ jest zestawem parametrów, $\theta\in(-\pi,\pi]$, a stan początkowy $\ket{\phi_0}$ jest zwykle postaci $\ket{\phi_0}=\ket{0}^N$. Ponieważ tak zadana funkcja $\ket{\psi}$ jest znormalizowana, zadanie optymalizacyjne możemy zapisać jako
 \begin{equation}
 E_{VQE} = \min_\theta \bra{0} U^\dagger(\theta) H U(\theta)\ket{0},
+\label{eqn:vqe-min}
 \end{equation}
 a wyrażenie to jest określane funkcją kosztu w wariacyjnym algorytmie kwantowym.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.5\textwidth]{vqe-pl.pdf}
-	\caption{Koncepcja działania kwantowego algorytmu wariacyjnego.}
+	\includegraphics[width=0.65\textwidth]{vqe-pl.pdf}
+	\caption{Koncepcja działania kwantowego algorytmu wariacyjnego z zaznaczeniem hybrydowego charakteru działania procedury. Elementu w kolorze niebieskim wykonywane są na komputerze kwantowym, elementy w kolorze pomarańczowym są wykonywane na komputerze klasycznym.}
 	\label{fig:koncepcja-vqe}
 \end{figure}
 
@@ -106,25 +108,33 @@ Podstawowym elementem każdego kwantowego algorytmu wariacyjnego jest zapisanie 
 
 Funkcja koszu jest skonstruowana tak, że znalezienie parametrów ansatzu, które minimalizują jej wartość, rozwiązuje interesujący nas problem.  W ogólności funkcja kosztu może być wyrażona w postaci
 \begin{equation}
-	C(\theta)  = f(\{\rho_k\}, \{O_k\}, U(\theta))
+	C(\theta)  = f(\{\rho_k\}, \{O_k\}, U(\theta)),
 \end{equation}
-gdzie $f$ to dowolna funkcja, $\rho_k$ to zestaw stanów wejściowych, a $O_k$ to obserwable.
+gdzie $f$ to dowolna funkcja, $\rho_k$ to zestaw stanów wejściowych, a $O_k$ to obserwable. W wielu przypadkach możliwe jest wyrażenie funkcji kosztu jako
+\begin{equation}
+	C(\theta) = \sum_kf_k\left(\tr\left[ O_k U(\theta) \rho_k U^\dagger(\theta)\right] \right).
+\end{equation}
+Wybór formy funkcji kosztu jest podyktowany rozwiązywanym zadaniem.
 
+%-------------------------------------------------------------------------------
+\subsection{Własności funkcji kosztu}
+%-------------------------------------------------------------------------------
 Aby funkcja kosztu była dobra do wykorzystania w wariacyjnym algorytmie kwantowym, powinna spełniać następujące warunki:
 \begin{itemize}
-	\item wierność -- 
-	\item wydajność estymacji -- 
-	\item znaczenie operacyjne --
-	\item trenowalność -- 
+	\item wierność -- minimum funkcji kosztu powinno odpowiadać rozwiązaniu zadanego problemu;
+	\item wydajność estymacji -- funkcja kosztu powinna możliwa do obliczenia w sposób \emph{wydajny} poprzez wykonywanie pomiarów na komputerze kwantowym oraz klasyczny preprocessingu, a jednocześnie zakłada się, że nie może być ona wyliczona wydajnie na komputerze klasycznym; dodatkowo obwód implementujący funkcję kosztu powinien być płytki z korzystać z małej ilości kubitów dodatkowych;
+	\item znaczenie operacyjne -- mniejsze wartości funkcji kosztu powinny odpowiadać lepszym rozwiązaniom problemu;
+	\item trenowalność -- powinno być możliwe \emph{wydajne} wykonanie optymalizacji funkcji kosztu, czyli fazy uczenia na komputerze klasycznym.
+	
 \end{itemize}
 
 
-\paragraph{Wierność}
-\paragraph{Wydajność estymacji}
-\paragraph{Znaczenie operacyjne}
-\paragraph{Trenowalność}
-
-\newpage 
+%\paragraph{Wierność}
+%\paragraph{Wydajność estymacji}
+%\paragraph{Znaczenie operacyjne}
+%\paragraph{Trenowalność}
+%
+%\newpage 
 
 %-------------------------------------------------------------------------------
 \hypertarget{typy-ansatzow}{%
@@ -136,14 +146,11 @@ Jednym z kluczowych elementów projektowanie algorytmu opartego na metodzie wari
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.5\textwidth]{ansatz.pdf}
+	\includegraphics[width=0.6\textwidth]{ansatz.pdf}
 	\caption{Zasada konstrukcji ansatzow w wariacyjnych algorytmach kwantowych}
 \end{figure}
 
-
-
-
-Struktura ansatza zależy od problemu który mamy zadanie rozwiązać. W związku z tym możemy wyróżnić ansatze inspirowane problemowo.
+Struktura ansatza zależy od problemu który mamy zadanie rozwiązać. W związku z tym możemy wyróżnić ansatze inspirowane problemowo oraz ansatze inspirowane sprzętowo.
 
 
 
@@ -151,9 +158,7 @@ Struktura ansatza zależy od problemu który mamy zadanie rozwiązać. W związk
 \subsection{Ansatz wydajny sprzętowo}
 %-------------------------------------------------------------------------------
 
-Ansatz wydajny sprzętowo \ang{hardware efficient ansatz -- HEA} to ogólna nazwa rodziny ansatzów w konstrukcji których wykorzystywana jest wiedza na temat architektury komputera kwantowego na którym będzie realizowany algorytm. Wiedza ta pozwala na zminimalizowanie głębokości obwodów dla danej architektury komputera kwantowego. Ponieważ zmniejszenie głębokości przekłada się na ograniczenie wpływu szumu kwantowego na jakość wykonywanych obliczeń, to podejście jest ważne jeżeli celem jest jak najwierniejsze wykonanie założonego zestawu operacji kwantowych.
-
-W przypadku tego typu ansatzów pojawiają się często problemy ze zbieżnością, zwłaszcza przy losowej inicjalizacji parametrów.
+Ansatz wydajny sprzętowo \ang{hardware efficient ansatz -- HEA} to ogólna nazwa rodziny ansatzów w konstrukcji których wykorzystywana jest wiedza na temat architektury komputera kwantowego na którym będzie realizowany algorytm. Wiedza ta pozwala na zminimalizowanie głębokości obwodów dla danej architektury komputera kwantowego. Ponieważ zmniejszenie głębokości przekłada się na ograniczenie wpływu szumu kwantowego na jakość wykonywanych obliczeń, to podejście jest ważne jeżeli celem jest jak najwierniejsze wykonanie założonego zestawu operacji kwantowych. W przypadku tego typu ansatzów pojawiają się często problemy ze zbieżnością, zwłaszcza przy losowej inicjalizacji parametrów.
 
 %-------------------------------------------------------------------------------
 \subsection{Warstwowy ansatz wydajny sprzętowo}
@@ -170,29 +175,57 @@ Kwantowy naprzemienny ansatz operatorowy \ang{quantum alternating operator anzat
 	e^{Ht} \approx \left(e^{\frac{Ht}{n}}\right)^n.
 \end{equation}
 
+W tym wypadku troteryzacja stosowana jest do adiabatycznej ewolucji, która ma przygotować stań własny odpowiadający rozwiązaniu zadanego problemu, opisanego przez Hamiltonian problemu $H_P$. Prowadzi to ansatzu postaci
+\begin{equation}
+	U(\beta,\gamma)  = \prod_{i=1}^{p} e^{-i\beta_i H_M} e^{-i\gamma_i H_P},
+\end{equation}
+gdzie $H_P$ jest tzw. mixerem, a parametr $p$ określa dokładność zastosowanego przybliżenia i wpływa na ilość warstw wykorzystywanych w konstrukcji ansatzu. W tym wypadku $\theta = (\beta,\gamma)$.
 
 %-------------------------------------------------------------------------------
 \subsection{Ansatz UCC}
 %-------------------------------------------------------------------------------
 
+Ansatz UCC (Unitary Coupled Clustered Ansatz) jest inspirowanym problemowo ansatzem powszechnie stosowany w problemach chemii kwantowej. W takich wypadkach celem jest uzyskanie energii stanu podstawowego fermionowego  Hamiltonianu $H$. Ansatz UCC startuje ze stanu referencyjnego $\ket{\phi_0}$, proponując rozwiązania postaci 
+\begin{equation}
+	e^{T(\theta)-T^\dagger(\theta)}\ket{\phi_0},
+\end{equation}
+gdzie $T = \sum_k T_k$, a operatory $T_k$ to operatory wzbudzeń. W wersji SDUCC (Singe and Double Unitary Coupled Clustered Ansatz) brane są pod uwagę operatory
+\begin{eqnarray}
+	T_1 &=& \sum_{i,j} \theta_i^ja^\dagger_i a^{\phantom\dagger}_j,\\
+	T_2 &=& \sum_{i,j,k,l} \theta_{i,j}^{k,l}a^\dagger_i a^\dagger_j a^{\phantom\dagger}_k a^{\phantom\dagger}_l,
+\end{eqnarray}
+gdzie $a^{\dagger}_i$ oraz $a^{\phantom\dagger}_j$ to fermionowe operatory kreacji i anihiliacji.
+
+Implementacja tego ansatdzu na komputerze kwantowym wymaga wykorzystania transformacji Jordana-Wignera lub transformacji Braviyego-Kitaeva do mapowania operatorów fermionowych na operatory spinowe.
+
 %-------------------------------------------------------------------------------
 \subsection{Wariacyjny anzatz hamiltonowski}
 %-------------------------------------------------------------------------------
 
-Wariacyjny anzatz hamiltonowski \ang{Hamiltonian Variational Ansatz -- HVA} jest inspirowany przez QAOA.
+Wariacyjny anzatz hamiltonowski \ang{Hamiltonian Variational Ansatz -- HVA} jest -- podobnie jako QAOA -- ansatzem bazującym na troteryzacji przygotowania stanu. W tym wypadku każdy krok odpowiada odpowiada warstwie ansatzu, co prowadzi do postaci
+\begin{equation}
+	U(\theta)  = \prod_i \left( \prod_j e^{-\theta_{i,j} H_j} \right)
+\end{equation}
 
+ Ansatz ten jest wykorzystany w chemii kwantowej, do rozwiązywania problemów optymalizacyjnych oraz do symulacji układów kwantowych.
 
-\newpage
+%-------------------------------------------------------------------------------
+\subsection{Anzatz o zmiennej strukturze}
+%-------------------------------------------------------------------------------
+
+W przypadku większości ansatzów optymalizacji podlegają jedynie parametry ciągłe odpowiadające kątom obrotów. Pozwala to na kontrolowanie złożoności wynikowego obwodu, ale ogranicza możliwości manipulacji strukturą obwodu, np. poprzez dodawanie lub usuwanie bramek. Z tego powodu zaproponowane zostały również warianty konstrukcji ansatzu dopuszczające takie modyfikacji (m.in. ADAPT-VQE). Wprowadzono również wersji QAOA ze zmienną strukturą. W tych wypadkach konieczne jest stosowanie heurystyk które pozwalają na radzenie sobie ze złożonością optymalizacji struktury struktury ansatzu.
+
 %-------------------------------------------------------------------------------
 \hypertarget{optymalizacja}{%
 	\section{Optymalizacja}\label{optymalizacja}}
 %-------------------------------------------------------------------------------
 
+Po zdefiniowaniu funkcji kosztów i ansatzu, następnym krokiem jest wytrenowanie parametrów $\theta$ i rozwiązanie problemu optymalizacyjnego z równania \ref{eqn:vqe-min}. Wiadomo, że dla wielu zadań optymalizacyjnych, wykorzystanie informacji zawartych w gradiencie funkcji kosztów (lub w pochodnych wyższego rzędu) może pomóc w przyspieszeniu i zagwarantowaniu zbieżności optymalizatora. Jedną z głównych zalet wielu VQA jest to, można analitycznie ocenić gradient funkcji kosztów.
 
 Problem optymalizacji jest kluczowy w trenowaniu wariacyjnych algorytmów kwantowych. Wykazano, że klasyczne problemy optymalizacyjne odpowiadające VQA i QAOA są NP-trudne. Co więcej, pokazano, że dla każdego algorytmu działającego w czasie wielomianowym istnieją instancje, dla których błąd względny wynikający z klasycznego problemu optymalizacyjnego może być dowolnie duży przy założeniu $\mathbf{P} \not= \mathbf{NP}$. Wskazuje to, że klasyczna optymalizacja w wariacyjnych algorytmach kwantowych jest fundamentalnie trudna, a nie tylko dziedziczy trudność po problemie znajdowania stanu podstawowego.
 
 
-\newpage 
+%\newpage 
 
 
 
