@@ -127,6 +127,14 @@ SWAP na dwóch kopiach stanów oczyszczonych~. Tutaj, aby zasymulować otwarty u
 \subsection{Informacja kwantowa}
 %-------------------------------------------------------------------------------
 
+\paragraph{Kompilacja obwodów kwantowych} Kompilacja algorytmów kwantowych dla komputerów kwantowych najbliższej przyszłości, uwzględniająca architekturę połączeń oraz dostępne operacje natywne jest sporym wyzwaniem. Uniknięcie wykładniczego narzutu klasycznej symulacji dynamiki kwantowej pozwoli na kompilację większych algorytmów, a strategią na to jest ocena kosztu algorytmu na komputerze kwantowym. W tym celu proponujemy wariacyjny hybrydowy algorytm kwantowo-klasyczny zwany kwantowo wspomaganą kompilacją (QAQC -- Quantum Assistaed Quantum Compilation). 
+%
+W QAQC funkcją kosztu jest iloczyn skalarny docelowej operacji unitarnej $U$ i trenowanej operacji unitarnej $V$ określony jako $tr U^\dagger V$. Tak jak we wszystkich VQA funkcja ta jest ewaluowana za pomocą obwodu kwantowego.
+%
+Aby zapewnić, że QAQC dobrze skaluje się z wielkością problemu, zaproponowany koszt obejmuje nie tylko globalne nakładanie się operacji, ale także lokalne nakładanie się w odniesieniu do poszczególnych qubitów. Dzięki temu możliwe możliwe było zaproponowanie płytkich obwodów kwantowych. Wykazano również, że wprowadzony koszt nie nie może być efektywnie przybliżony klasycznym algorytmem przy rozsądnych założeniach złożoności.
+% 
+Zastosowania QAQC obejmują kompresję głębokości algorytmów, kompilację czarnej skrzynki, motywację błędów i benchmarking.
+
 %-------------------------------------------------------------------------------
 \subsection{Badania podstawowe}
 %-------------------------------------------------------------------------------
@@ -139,17 +147,13 @@ SWAP na dwóch kopiach stanów oczyszczonych~. Tutaj, aby zasymulować otwarty u
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-\subsection{Informacja kwantowa}
+\subsection{Klasyfikatory}
 %-------------------------------------------------------------------------------
 
 
-\paragraph{Kompilacja obwodów kwantowych} Kompilacja algorytmów kwantowych dla komputerów kwantowych najbliższej przyszłości, uwzględniająca architekturę połączeń oraz dostępne operacje natywne jest sporym wyzwaniem. Uniknięcie wykładniczego narzutu klasycznej symulacji dynamiki kwantowej pozwoli na kompilację większych algorytmów, a strategią na to jest ocena kosztu algorytmu na komputerze kwantowym. W tym celu proponujemy wariacyjny hybrydowy algorytm kwantowo-klasyczny zwany kwantowo wspomaganą kompilacją (QAQC -- Quantum Assistaed Quantum Compilation). 
-%
-W QAQC funkcją kosztu jest iloczyn skalarny docelowej operacji unitarnej $U$ i trenowanej operacji unitarnej $V$ określony jako $tr U^\dagger V$. Tak jak we wszystkich VQA funkcja ta jest ewaluowana za pomocą obwodu kwantowego.
-%
-Aby zapewnić, że QAQC dobrze skaluje się z wielkością problemu, zaproponowany koszt obejmuje nie tylko globalne nakładanie się operacji, ale także lokalne nakładanie się w odniesieniu do poszczególnych qubitów. Dzięki temu możliwe możliwe było zaproponowanie płytkich obwodów kwantowych. Wykazano również, że wprowadzony koszt nie nie może być efektywnie przybliżony klasycznym algorytmem przy rozsądnych założeniach złożoności.
-% 
-Zastosowania QAQC obejmują kompresję głębokości algorytmów, kompilację czarnej skrzynki, motywację błędów i benchmarking.
+%-------------------------------------------------------------------------------
+\subsection{Modele generatywne}
+%-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
 \subsection{Badania podstawowe}
