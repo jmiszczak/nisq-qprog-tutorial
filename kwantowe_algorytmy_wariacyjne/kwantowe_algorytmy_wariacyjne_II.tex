@@ -16,7 +16,12 @@
 \hypersetup{hidelinks}
 \urlstyle{same} 
 
-
+\usepackage{dsfont}
+\newcommand{\bra}[1]{\left\langle{#1}\right|}
+\newcommand{\ket}[1]{\left|{#1}\right\rangle}
+\newcommand{\braket}[2]{\left\langle{#1}|{#2}\right\rangle}
+\newcommand{\ketbra}[2]{\left| #1 \right\rangle \left\langle#2\right|}
+\newcommand{\Id}{\mathds{I}}
 
 \newcommand{\ang}[1]{(ang. \emph{#1})}
 
@@ -35,19 +40,16 @@
 Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych. 
 \end{abstract}
 
+\tableofcontents
+
+\newpage
+
 
 %-------------------------------------------------------------------------------
 \hypertarget{wprowadzenie}{%
 \section{Wprowadzenie}\label{wprowadzenie}}
 %-------------------------------------------------------------------------------
 
-
-\newpage 
-
-%-------------------------------------------------------------------------------
-\hypertarget{zastosowania}{%
-	\section{Zastosowania}\label{zastosowania}}
-%-------------------------------------------------------------------------------
 
 
 \begin{figure}[ht!]
@@ -56,43 +58,171 @@ Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych.
 	\caption{Potencjalne dziedziny w których zastosowanie wariacyjnych algorytmów kwantowych może prowadzić do uzyskania przewagi kwantowej.}
 \end{figure}
 
-%-------------------------------------------------------------------------------
-\hypertarget{matematyczne}{%
-	\subsection{Problemy obliczeniowe}\label{matematyczne}}
-%-------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------
-\hypertarget{sec1}{%
-	\section{sec1}\label{sec1}}
-%-------------------------------------------------------------------------------
 
 
-
-
-\paragraph{}
-\paragraph{}
-\paragraph{}
-\paragraph{}
-
-
-
+\newpage 
 
 
 %-------------------------------------------------------------------------------
-\subsection{}
+\section{Obliczenia kwantowe}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Kompilacja kwantowa}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Kwantowa korekcja błędów}
+%-------------------------------------------------------------------------------
+
+\newpage
+%-------------------------------------------------------------------------------
+\section{Znajdowanie stanu podstawowego}
+%-------------------------------------------------------------------------------
+
+Pierwszym i jednocześnie najbardziej rozpowszechnionym zastosowaniem VQA jest estymacja stanów podstawowych i odpowiadających im wartości własnych energii dla zadanego Hamiltonianu. Algorytmy kwantowe dla znajdowania stanu podstawowego danego Hamiltonianu projektowane dla uniwersalnych komputerów kwantowych opierały się na adiabatycznym przygotowaniu stanu i podprogramach kwantowej estymacji fazy. Niestety wymagania tych algorytmów dotyczące głębokości obwodu przekraczają te dostępne w erze NISQ.
+
+
+Z tego powodu pierwszy zaproponowany kwantowy algorytm wariacyjny, Variational Quantum Eigensolver (VQE), został opracowany w celu zapewnienia przybliżonego rozwiązania tego zadania.  W tym miejscu dokonujemy przeglądu zarówno oryginalnej architektury VQE, jak i niektórych bardziej zaawansowanych metod znajdowania stanów podstawowych i wzbudzonych. 
+
+
+%-------------------------------------------------------------------------------
+\subsection{Chemia kwantowa}
 %-------------------------------------------------------------------------------
 
 
 %-------------------------------------------------------------------------------
-\subsection{}
+\subsection{Fizyka fazy skondensowanej}
+%-------------------------------------------------------------------------------
+
+Poza statycznymi problemami stanów własnych, VQA mogą być również stosowane do symulacji dynamicznej ewolucji układu kwantowego. Konwencjonalne algorytmy symulacji Hamiltonianu kwantowego, takie jak formuła produktu Trottera-Suzuki,  dyskretyzują czas na małe kroki i symulują każdą ewolucję czasową za pomocą obwodu kwantowego. Dlatego głębokość obwodu zazwyczaj rośnie wielomianowo z rozmiarem systemu i symulowanym czasem.
+
+Biorąc pod uwagę szum nieodłącznie związany z urządzeniami NISQ, skumulowane błędy sprzętowe dla takich głębokich obwodów kwantowych mogą okazać się zaporowe. Aby rozwiązać ten problem, VQA do dynamicznej symulacji kwantowej używają tylko płytkiego obwodu głębokości, znacznie zmniejszając wpływ szumu sprzętowego.
+
+
+Ramy VQA można również rozszerzyć do symulacji dynamicznej ewolucji otwartych układów kwantowych. 
+ 
+ 
+ 
+% Przypuśćmy, że dynamika układu opisana jest przez $\frac{\rho}{dt} = \mathcal{L}{\rho)$, gdzie $\mathcal{L}$ oznacza superoperator dla procesu dyssypatywnego. Podobnie jak w podejściu iteracyjnym dla stanów czystych~, odwzorowuje się ewolucję stanu mieszanego na jeden z parametrów wariacyjnych poprzez zasadę McLachlana, która rozwiązuje minimalizację $min_{dot{theta}}|(\frac{d}{dt}- \mathcal{L})\rho(\i0)$. Rozwiązanie określa ewolucję parametrów $ M_{i,j}}= V$ przy czym 
+%
+% $M_{i,j}= ^mathrm{Tr}}}}big[^partial_i ^rho(vec{theta})^dag ^partial_j^rho(vec{theta}) ^big]$,  
+
+
+Każdy człon $M$ i $V$ może być obliczony przez zastosowanie układu testowego 
+SWAP na dwóch kopiach stanów oczyszczonych~. Tutaj, aby zasymulować otwarty układ $n$ qubitów, należy zastosować operacje na $4n+1$ qubitach. Alternatywnym podejściem, które zmniejsza ten narzut, jest symulacja stochastycznego równania Schr\"odingera, które rozkłada ewolucję macierzy gęstości na trajektorie czystych stanów. Każda trajektoria czystego stanu doświadcza ciągłego efektu tłumienia i procesów skokowych spowodowanych operatorami szumu, z których oba mogą być efektywnie symulowane. Ponieważ w tej metodzie kontroluje się tylko jedną kopię stanu czystego, wymaga ona jedynie $n+1$ qubitów. 
+
+\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Nowe technologie}
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+\subsection{Metrologia kwantowa}
 %-------------------------------------------------------------------------------
 
 %-------------------------------------------------------------------------------
-\subsection{}
+\subsection{Informacja kwantowa}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Badania podstawowe}
 %-------------------------------------------------------------------------------
 
 
+\newpage 
 
+%-------------------------------------------------------------------------------
+\section{Uczenie maszynowe}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Informacja kwantowa}
+%-------------------------------------------------------------------------------
+
+
+\paragraph{Kompilacja obwodów kwantowych} Kompilacja algorytmów kwantowych dla komputerów kwantowych najbliższej przyszłości, uwzględniająca architekturę połączeń oraz dostępne operacje natywne jest sporym wyzwaniem. Uniknięcie wykładniczego narzutu klasycznej symulacji dynamiki kwantowej pozwoli na kompilację większych algorytmów, a strategią na to jest ocena kosztu algorytmu na komputerze kwantowym. W tym celu proponujemy wariacyjny hybrydowy algorytm kwantowo-klasyczny zwany kwantowo wspomaganą kompilacją (QAQC -- Quantum Assistaed Quantum Compilation). 
+%
+W QAQC funkcją kosztu jest iloczyn skalarny docelowej operacji unitarnej $U$ i trenowanej operacji unitarnej $V$ określony jako $tr U^\dagger V$. Tak jak we wszystkich VQA funkcja ta jest ewaluowana za pomocą obwodu kwantowego.
+%
+Aby zapewnić, że QAQC dobrze skaluje się z wielkością problemu, zaproponowany koszt obejmuje nie tylko globalne nakładanie się operacji, ale także lokalne nakładanie się w odniesieniu do poszczególnych qubitów. Dzięki temu możliwe możliwe było zaproponowanie płytkich obwodów kwantowych. Wykazano również, że wprowadzony koszt nie nie może być efektywnie przybliżony klasycznym algorytmem przy rozsądnych założeniach złożoności.
+% 
+Zastosowania QAQC obejmują kompresję głębokości algorytmów, kompilację czarnej skrzynki, motywację błędów i benchmarking.
+
+%-------------------------------------------------------------------------------
+\subsection{Badania podstawowe}
+%-------------------------------------------------------------------------------
+\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Matematyka stosowana}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Rozwiązywanie układów równań}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\subsection{Optymalizacja kombinatoryczna}
+%-------------------------------------------------------------------------------
+
+Pierwszą grupą procedur kwantowych służących do optymalizacji są algorytmy bazujące na QAOA (Quantum Approximate Optimization Algorithm) -- algorytmach przybliżonej optymalizacji kwantowej. Algorytm te to heurystyki do projektowania wariacyjnych układów bramek do optymalizacji kombinatorycznej. Schemat ten opiera się na wykorzystaniu twierdzenia adiabatycznego.
+
+
+Zadanie optymalizacji kombinatorycznej ma na celu znalezienie optymalnego obiektu z skończonego zbioru rozwiązań. Problem można sformułować jako maksymalizację funkcji celu, która jest sumą funkcji boolowskich.
+
+Każda funkcja logiczna $C_\alpha:\{0,1\}^n\rightarrow\{0,1\}$ przyjmuje na wejściu ciąg 0-1, a zwraca jedną z wartości 0 lub 1. Problem optymalizacji kombinatorycznej na $n$ bitach i $m$ klauzulach jest równoważny znalezieniu ciągu bitów który maksymalizuje funkcję
+\[
+C (z) = \sum_{\alpha = 1}^m C_\alpha(z), \quad z\in\{0,1\}^n
+\] 
+
+Na potrzeby realizacji procedury optymalizacyjnej na komputerze kwantowym funkcja celu reprezentowana jest jako model QUBO (Quandratic Unconstrained Binary Optimization). W modelu takim dopuszcza się tylko zmienne binarne i mogą występować one w wyrazach drugiego rzędu,
+\[
+C_{QUBO}(b) = \sum_{i\leq j}w_{ij} b_i b_j,
+\]
+gdzie macierz $w_{ij}\in\mathds{R}$ reprezentuje wagi. Maksymalizacja  $C_{QUBO}(b)$ odpowiada znalezieniu ciągu bitów $b = b_1b_2\dots b_n$
+
+Na bazie modelu QUBO problemu możliwe jest zapisanie Hamiltoniamu modelu Isinga odpowiadającego temu problemowi. W tym celu każdej zmiennej binarnej $b_i$ przyporządkowuje się operator $Z_i$ odpowiadający macierzy Pauliego Z działającej na $i$-ty spin,
+\[
+b_i \mapsto \frac{1}{2}(1-Z_i).
+\]
+W ten sposób Hamiltonian funkcji celu przyjmuje postać
+\[
+H_C = \sum_{i\leq j} w_{ij} (1-Z_i)(1- Z_j),
+\]
+co powoduje, iż w modelu występują jedynie oddziaływania dwucząstkowe. 
+
+Hamiltionain $H_0$ jest budowany z macierzy Pauliego X
+\[
+H_0 = \sum_i X_i,
+\]
+a stan początkowy jest stanem własnym $H_0$. 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics{qaoa-pl.pdf}
+		\caption{Schemat działania kwantowego algorytmu przybliżonej optymalizacji. Para kątów $\gamma_k,\eta_k$, reprezentująca czas ewolucji dla $H_C$ i $H_0$, jest dobierana dla każdej iteracji w taki sposób aby wykonanie obwodu doprowadziło do minimalizacji funkcji kosztu zdefiniowanej przez $H_C$.}
+	\end{center}
+\end{figure}
+
+Obwody kwantowe konstruowane tą metodą składają się z naprzemiennego stosowanie bloku funkcji celu i bloku ewolucji. Stan układu po wykonaniu $k$ iteracji jest postaci
+\[
+\ket{\phi_k(\gamma,\eta)} = e^{-i\eta_k H_O} e^{-i\gamma_k H_C}\dots e^{-i\eta_1 H_O}e^{-i\gamma_k H_C}\left(\frac{\ket{0}+\ket{1}}{2}\right)^n.
+\]
+Hamiltonian ten odpowiada serii obrotów $R_X$, natomiast $H_C$ odpowiada obrotom $R_Z$. 
+
+
+Przykładowo, rozważmy problem podziału: czy dla $S=\{n_1,\dots,n_N\}$ istnieje taki podział na dwa zbiory $R$ oraz $S \setminus R$ takie, że
+\[
+\sum_{R}n_i = \sum_{S\setminus R} n_i.
+\]
+Dla takiego problemu
+\[
+H_C = \sum_{i=1}^N n_i Z_i.
+\]
+Jeżeli istnieje stan podstawowy $H_C$ z energią równą 0, to oznacza, iż istnieje konfiguracja spinów w stanie $+1$ i w stanie $-1$, taka, że odpowiednie sumy $n_i$ się znoszą.
 
 \newpage 
 
@@ -103,6 +233,18 @@ Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych.
 \def\labelenumi{\arabic{enumi}.}
 %\tightlist
 
+
+\subsection*{Znajdowanie stanu podstawowego}
+
+\item Aspuru-Guzik, A., Dutoi, A.D., Love, P.J. and Head-Gordon, M., 2005. Simulated quantum computation of molecular energies. Science, 309(5741), pp.1704-1707.
+
+\item Abrams, D.S. and Lloyd, S., 1999. Quantum algorithm providing exponential speed increase for finding eigenvalues and eigenvectors. Physical Review Letters, 83(24), p.5162.
+
+
+\subsection*{Obliczenia kwantowe}
+
+\item Khatri, S., LaRose, R., Poremba, A., Cincio, L., Sornborger, A.T. and Coles, P.J., 2019. Quantum-assisted quantum compiling. Quantum, 3, p.140. \url{https://arxiv.org/abs/1807.00800} \url{https://doi.org/10.22331/q-2019-05-13-140}
+
 \subsection*{Rozwiązywanie układów równań}
 
 \item Huang, H.Y., Bharti, K. and Rebentrost, P., 2021. Near-term quantum algorithms for linear systems of equations with regression loss functions. New Journal of Physics, 23(11), p.113021. \url{https://doi.org/10.1088/1367-2630/ac325f}
@@ -112,9 +254,6 @@ Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych.
 
 \item Pellow-Jarman, A., Sinayskiy, I., Pillay, A. et al. A comparison of various classical optimizers for a variational quantum linear solver. Quantum Inf Process 20, 202 (2021). \url{https://doi.org/10.1007/s11128-021-03140-x}
 
-\subsection*{Obliczenia kwantowe}
-
-\item
 
 
 \end{enumerate}
