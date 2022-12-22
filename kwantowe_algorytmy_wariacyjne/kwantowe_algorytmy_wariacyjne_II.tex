@@ -29,7 +29,7 @@
 \begin{document}
 
 
-\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Zastosowania}}
+\title{Kwantowe obliczenia wariacyjne\\ {\normalsize Przegląd wybranych zastosowań}}
 
 \author{Jarosław Miszczak}
 \date{21/12/2022}
@@ -37,7 +37,7 @@
 \maketitle
 
 \begin{abstract}
-Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych. 
+Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych. Przedstawione są proponowane algorytmy wariacyjne które mogą być wykorzystywane do estymacji energii stanu podstawowego, rozwiązywania problemów optymalizacji kombinatorycznej oraz problemów pojawiających się w informatyce kwantowej.
 \end{abstract}
 
 \tableofcontents
@@ -50,7 +50,7 @@ Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych.
 \section{Wprowadzenie}\label{wprowadzenie}}
 %-------------------------------------------------------------------------------
 
-
+W ostatnich kilku dekadach badacze z wielu obszarów nauki i techniki połączyło siły w celu zbadania i opracowania algorytmów kwantowych oraz ich eksperymentalnej realizacji. Jednak większość pierwotnie zaproponowanych algorytmów kwantowych wymaga milionów fizycznych qubitów do implementacji na sprzęcie kwantowym. Istniejący sprzęt kwantowy zawiera bardzo mało (rzędu stu) fizycznych qubitów i są one nazywane urządzeniami Noisy Intermediate-Scale Quantum (NISQ). Wariacyjne algorytmy kwantowe (VQAs) są klasą algorytmów NISQ, które mogą być zaimplementowane na urządzeniach NISQ i zostały zaprojektowane biorąc pod uwagę ograniczenia tej klasy urządzeń.
 
 \begin{figure}[ht!]
 	\centering
@@ -58,19 +58,36 @@ Raport przedstawia wybrane zastosowania wariacyjnych algorytmów kwantowych.
 	\caption{Potencjalne dziedziny w których zastosowanie wariacyjnych algorytmów kwantowych może prowadzić do uzyskania przewagi kwantowej.}
 \end{figure}
 
+Wśród klasy VQAs, Variational Quantum Eigensolver (VQE) pomaga nam znaleźć stan podstawowy cząsteczki. Ma to zastosowanie w odkrywaniu leków, materiałoznawstwie i chemii kwantowej. Innym przykładem VQA jest kwantowy przybliżony algorytm optymalizacji (QAOA), który może być używany do kodowania i rozwiązywania binarnych problemów optymalizacyjnych.
+
+Pierwszym i jednocześnie najbardziej rozpowszechnionym zastosowaniem VQA jest estymacja stanów podstawowych i odpowiadających im wartości własnych energii dla zadanego Hamiltonianu. Algorytmy kwantowe dla znajdowania stanu podstawowego danego Hamiltonianu projektowane dla uniwersalnych komputerów kwantowych opierały się na adiabatycznym przygotowaniu stanu i podprogramach kwantowej estymacji fazy. Niestety wymagania tych algorytmów dotyczące głębokości obwodu przekraczają te dostępne w erze NISQ.
 
 
-\newpage 
+Poza statycznymi problemami stanów własnych, VQA mogą być również stosowane do symulacji dynamicznej ewolucji układu kwantowego. Konwencjonalne algorytmy symulacji Hamiltonianu kwantowego, takie jak formuła produktu Trottera-Suzuki,  dyskretyzują czas na małe kroki i symulują każdą ewolucję czasową za pomocą obwodu kwantowego. Dlatego głębokość obwodu zazwyczaj rośnie wielomianowo z rozmiarem systemu i symulowanym czasem.
+
+Natomiast pierwszą grupą procedur kwantowych służących do optymalizacji są algorytmy bazujące na QAOA (Quantum Approximate Optimization Algorithm) -- algorytmach przybliżonej optymalizacji kwantowej. Algorytm te to heurystyki do projektowania wariacyjnych układów bramek do optymalizacji kombinatorycznej. Schemat ten opiera się na wykorzystaniu twierdzenia adiabatycznego. Zadanie optymalizacji kombinatorycznej ma na celu znalezienie optymalnego obiektu z skończonego zbioru rozwiązań. Problem można sformułować jako maksymalizację funkcji celu, która jest sumą funkcji boolowskich.
+Na potrzeby realizacji procedury optymalizacyjnej na komputerze kwantowym funkcja celu reprezentowana jest jako model QUBO (Quandratic Unconstrained Binary Optimization). W modelu takim dopuszcza się tylko zmienne binarne i mogą występować one w wyrazach drugiego rzędu.
+
+Zarówno VAE jak i QAOA są kwantowo-klasycznymi algorytmami, których zasadniczą częścią jest układ bramek kwantowych wykonywany na sprzęcie kwantowym. Układ ten jest często reprezentowany przez serię sparametryzowanych jednokubitowych i nieparametryzowanych dwukubitowych kwantowych bramek logicznych. W ten sposób przygotowany zostaje stan kwantowy. Następnie energia układu którego cechy chcemy zbadać jest optymalizowana na klasycznym komputerze w celu uzyskania energii stanu podstawowego. 
+
+Jednym z najtrudniejszych aspektów VQA jest skonstruowanie efektywnego układu bramek kwantowych. Wydajność tego układu jest definiowana przez określenie (1) jak mała jest głębokość (każda warstwa zawiera tylko równoległe operacje) układu bramek, (2) dokładność w oszacowaniu energii stanu podstawowego, oraz (3) ocenę funkcji energii na klasyczny przebieg optymalizacji.
+
+
+
+
+
+
+\newpage
 
 
 %-------------------------------------------------------------------------------
 \section{Obliczenia kwantowe}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Kompilacja kwantowa}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Kwantowa korekcja błędów}
 %-------------------------------------------------------------------------------
@@ -89,7 +106,7 @@ Z tego powodu pierwszy zaproponowany kwantowy algorytm wariacyjny, Variational Q
 %-------------------------------------------------------------------------------
 \subsection{Chemia kwantowa}
 %-------------------------------------------------------------------------------
-
+\newpage
 
 %-------------------------------------------------------------------------------
 \subsection{Fizyka fazy skondensowanej}
@@ -112,17 +129,19 @@ Ramy VQA można również rozszerzyć do symulacji dynamicznej ewolucji otwartyc
 Każdy człon $M$ i $V$ może być obliczony przez zastosowanie układu testowego 
 SWAP na dwóch kopiach stanów oczyszczonych~. Tutaj, aby zasymulować otwarty układ $n$ qubitów, należy zastosować operacje na $4n+1$ qubitach. Alternatywnym podejściem, które zmniejsza ten narzut, jest symulacja stochastycznego równania Schr\"odingera, które rozkłada ewolucję macierzy gęstości na trajektorie czystych stanów. Każda trajektoria czystego stanu doświadcza ciągłego efektu tłumienia i procesów skokowych spowodowanych operatorami szumu, z których oba mogą być efektywnie symulowane. Ponieważ w tej metodzie kontroluje się tylko jedną kopię stanu czystego, wymaga ona jedynie $n+1$ qubitów. 
 
-\newpage 
+\newpage
+\ 
+\newpage
 
 %-------------------------------------------------------------------------------
 \section{Nowe technologie}
 %-------------------------------------------------------------------------------
 
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Metrologia kwantowa}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Informacja kwantowa}
 %-------------------------------------------------------------------------------
@@ -134,40 +153,40 @@ W QAQC funkcją kosztu jest iloczyn skalarny docelowej operacji unitarnej $U$ i 
 Aby zapewnić, że QAQC dobrze skaluje się z wielkością problemu, zaproponowany koszt obejmuje nie tylko globalne nakładanie się operacji, ale także lokalne nakładanie się w odniesieniu do poszczególnych qubitów. Dzięki temu możliwe możliwe było zaproponowanie płytkich obwodów kwantowych. Wykazano również, że wprowadzony koszt nie nie może być efektywnie przybliżony klasycznym algorytmem przy rozsądnych założeniach złożoności.
 % 
 Zastosowania QAQC obejmują kompresję głębokości algorytmów, kompilację czarnej skrzynki, motywację błędów i benchmarking.
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Badania podstawowe}
 %-------------------------------------------------------------------------------
 
 
-\newpage 
+\newpage
+\ 
+\newpage
 
 %-------------------------------------------------------------------------------
 \section{Uczenie maszynowe}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Klasyfikatory}
 %-------------------------------------------------------------------------------
-
+\newpage
 
 %-------------------------------------------------------------------------------
 \subsection{Modele generatywne}
 %-------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------
-\subsection{Badania podstawowe}
-%-------------------------------------------------------------------------------
-\newpage 
+\newpage
+\ 
+\newpage
 
 %-------------------------------------------------------------------------------
 \section{Matematyka stosowana}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Rozwiązywanie układów równań}
 %-------------------------------------------------------------------------------
-
+\newpage
 %-------------------------------------------------------------------------------
 \subsection{Optymalizacja kombinatoryczna}
 %-------------------------------------------------------------------------------
@@ -228,7 +247,9 @@ H_C = \sum_{i=1}^N n_i Z_i.
 \]
 Jeżeli istnieje stan podstawowy $H_C$ z energią równą 0, to oznacza, iż istnieje konfiguracja spinów w stanie $+1$ i w stanie $-1$, taka, że odpowiednie sumy $n_i$ się znoszą.
 
-\newpage 
+\newpage
+\ 
+\newpage
 
 \hypertarget{literatura}{%
 \section*{Literatura}\label{literatura}}
