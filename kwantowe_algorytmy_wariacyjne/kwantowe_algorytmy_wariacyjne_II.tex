@@ -32,7 +32,7 @@
 \title{Kwantowe obliczenia wariacyjne\\ {\normalsize Przegląd wybranych zastosowań}}
 
 \author{Jarosław Miszczak}
-\date{21/12/2022}
+\date{29/12/2022}
 
 \maketitle
 
@@ -70,9 +70,12 @@ Na potrzeby realizacji procedury optymalizacyjnej na komputerze kwantowym funkcj
 
 Zarówno VAE jak i QAOA są kwantowo-klasycznymi algorytmami, których zasadniczą częścią jest układ bramek kwantowych wykonywany na sprzęcie kwantowym. Układ ten jest często reprezentowany przez serię sparametryzowanych jednokubitowych i nieparametryzowanych dwukubitowych kwantowych bramek logicznych. W ten sposób przygotowany zostaje stan kwantowy. Następnie energia układu którego cechy chcemy zbadać jest optymalizowana na klasycznym komputerze w celu uzyskania energii stanu podstawowego. 
 
-Jednym z najtrudniejszych aspektów VQA jest skonstruowanie efektywnego układu bramek kwantowych. Wydajność tego układu jest definiowana przez określenie (1) jak mała jest głębokość (każda warstwa zawiera tylko równoległe operacje) układu bramek, (2) dokładność w oszacowaniu energii stanu podstawowego, oraz (3) ocenę funkcji energii na klasyczny przebieg optymalizacji.
-
-
+Jednym z najtrudniejszych aspektów VQA jest skonstruowanie efektywnego układu bramek kwantowych. Wydajność tego układu jest definiowana przez określenie:
+\begin{itemize}
+\item jak mała jest głębokość, gdzie każda warstwa zawiera tylko równoległe operacje, układu bramek, 
+\item dokładność w oszacowaniu energii stanu podstawowego, oraz 
+\item ocenę funkcji energii na klasyczny przebieg optymalizacji.
+\end{itemize}
 
 
 
