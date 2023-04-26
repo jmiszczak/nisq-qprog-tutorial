@@ -110,7 +110,7 @@ pcvl.pdisplay(cnot)
 1. https://github.com/pasqal-io/Pulser
 1. https://cloud.quandela.com/
 1. Heurtel, Nicolas, Andreas Fyrillas, Grégoire de Gliniasty, Raphaël Le Bihan, Sébastien Malherbe, Marceau Pailhas, Eric Bertasi et al. "Perceval: A software platform for discrete variable photonic quantum computing." Quantum 7 (2023): 931. https://quantum-journal.org/papers/q-2023-02-21-931/
-
+1. https://perceval.quandela.net/
 
 
 
