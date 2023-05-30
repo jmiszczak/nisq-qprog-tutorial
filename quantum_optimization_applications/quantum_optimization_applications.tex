@@ -17,8 +17,9 @@
 
 %\begin{frontmatter}
 
-\title{Quantum computing technologies for optimization in real-world applications}
+\title{Quantum computing technologies for solving optimization problems in real-world scenarios}
 \author{Jaros\l aw Adam Miszczak}
+\date{May 30, 2023}
 %\address{{Institute of Theoretical and Applied Informatics, Polish Academy
 %		of Sciences}, {Baltycka 5}, {44-100}, {Gliwice}, {Poland}}
 %\address{Institute of Theoretical and Applied Informatics, Polish Academy
@@ -52,18 +53,22 @@ Second, as we are interested in actually assessing the usability of quantum tech
 
 An overview of commercial applications of quantum computing, identifying  quantum-safe encryption, material and drug discovery, and quantum-inspired algorithms among the most promising quantum applications is provided in \cite{bova2021commercial}. 
 
-Recent overview of the progress in the area of quantum annealing (QA), also knows a adiabatic quantum computation (AQC) or Quantum Adiabatic Algorithm (QAA), is provided in~\cite{yarkoni2022quantum}.
+Recent overview of the progress in the area of quantum annealing (QA), also knows a adiabatic quantum computation (AQC) or Quantum Adiabatic Algorithm (QAA), is provided in~\cite{yarkoni2022quantum}. With regard to combinatorial optimization, authors identify mobility, scheduling, and finance as the most promising areas of application for quantum computing technologies.
 
 
-One of the crutial element of the quantum computing ecosystem is software supporting quantum computing technologies. A comparison of quantum computing software platforms is provided in~\cite{larose2019overview} and recent surveys of the progress and trends in the field can be found in \cite{zhao2020quantum}, \cite{gill2021quantum} and \cite{miszczak2023symbolic}.
 
-The study presented in \cite{seskir2021landscape} provide an analysis of the research activities in the field of quantum technologies. An in-depth analysis of the recent explosion of commercial interest in quantum technologies can be found in~\cite{seskir2022landscape}.
+One of the crucial element of the quantum computing ecosystem is software supporting quantum computing technologies. A comparison of quantum computing software platforms is provided in~\cite{larose2019overview} and recent surveys of the progress and trends in the field can be found in \cite{zhao2020quantum}, \cite{gill2021quantum} and \cite{miszczak2023symbolic}. Also, the hand-on approach to the utilization of quantum optimization can be found in~\cite{combarro2023practical}.
+
+Finally, one should could also consider the high-level overview of the quantum computing technologies from the economical and legal perspective.
+The study presented in \cite{seskir2021landscape} provides an analysis of the research activities in the field of quantum technologies. An in-depth analysis of the recent explosion of commercial interest in quantum technologies can be found in~\cite{seskir2022landscape}. Finally, various political and legal aspects of quantum technologies are discussed in~\cite{hoofnagle2021law}. 
 
 
 
 \begin{itemize}
 \item 
 QAOA \cite{farhi2014quantum}
+
+\item QAOA+ \cite{hadfield2019quantum}
 
 \item Ising  \cite{lucas2014ising} QUBO \cite{glover2018tutorial}
 
@@ -77,15 +82,19 @@ Authors of \cite{choi2019tutorial} provide an in-depth exploration of the Quantu
 In \cite{crosson2021prospects} the assessment of the possibility for QA to 
 achieve quantum speed-up relative to classical state-of-the-art methods is provided.
 
-\newpage 
-
+%\newpage 
+%
 %-------------------------------------------------------------------------------
 \section{Transportation}
 %-------------------------------------------------------------------------------
 
+Being one of the largest areas of industry, transportation provide a natural area for harnessing the potential offered by quantum computers. 
+
 %-------------------------------------------------------------------------------
 \subsection{Vehicle routing}
 %-------------------------------------------------------------------------------
+
+One of the first real-word applications of QA for traffic optimization was proposed in~\cite{neukart2017traffic} as a part of collaboration between Volkswagen and D-Wave Systems. In this work parts of a real-world traffic flow optimization problem were mapper to a form suitable for QA devices. Additionally, a benchmarking of the quantum solution against the random assignment was provided.
 
 In \cite{borowski2020new} two hybrid algorithms and fully quantum solutions for Capacitated Vehicle Routing Problem (CVRP) were introduced and compared with classical solution. Introduced algorithms are benchmarked using D-Wave framework on a well-established set of benchmark test cases. Additionally, the algorithms are run on test scenarios built based on realistic road networks.
 
@@ -107,14 +116,14 @@ Another area of application which is studied in the context of quantum computing
 
 In \cite{domino2022quadratic} the problem of rescheduling of railway traffic due to disruptions. The problem is encoded into QUBO and HOBO formulations, and solved using D-Wave Advanatage. The major drawback of the quantum approach is the number of qubits available on current devices, whcih severly limits the usability of the proposed models. The benchmarking of the solution based on D-Wave against the classical solution is provided in \cite{domino2023quantum} and it clearly demonstrates that the utilization of current QA devices is very limited in the aspect of railway management in realistic scenarios. 
 
-\newpage 
+%\newpage 
 
 %-------------------------------------------------------------------------------
 \section{Finance}
 %-------------------------------------------------------------------------------
 
 
-\textit{This article is targeted at financial professionals and no particular background in quantum computation is assumed. }
+Utilization of quantum computing technologies in finance can be seen as the most direct rout for commercializing their potential. This could be achieved by using quantum computing optimization routines in applications related to managing money. For this reason several introductory articles targeted at financial professionals and books are available.
 
 In \cite{orus2019quantum} authors provided an overview of possible quantum computing approaches to financial problems. In particular, they provide an overview of current approaches and potential prospects, including the discussion of how QA can be used to portfolio optimization, arbitrage opportunities finding, and credit scoring.
 
@@ -123,28 +132,32 @@ Selected applications of quantum computing for finance, focusing on portfolio op
 A hybrid quantum-classical solution method to the mean-variance portfolio optimization problems is developed in~\cite{venturelli2019reverse}. The benchmarking samples are in this case based on the parametrized samples of portfolio optimization based on real financial data statistics and following the principles of the Modern Portfolio Theory (MPT).
 
 
-\cite{dri2022towards,dri2023more}
+Quantum algorithm for Credit Risk Analysis (CRA) was introduced in~\cite{egger2021credit}. Authors implemented the considered problem for a realistic loss distribution. Moreover, they analysed the scaling  for the case of a realistic problem size. One should note, however, that in this case it is assume that the fault-tolerant quantum device is available. A variant of this algorithm overcoming some limitation of the original proposal has been described in~\cite{dri2022towards,dri2023more}.
 
-\newpage 
-
-%-------------------------------------------------------------------------------
-\section{Energy}
-%-------------------------------------------------------------------------------
-
-\cite{ajagekar2019quantum}
-
-\newpage 
+%\newpage 
 
 %-------------------------------------------------------------------------------
-\section{Medicine}
+%\section{Energy}
 %-------------------------------------------------------------------------------
 
-\cite{floether2023state}
+%\cite{ajagekar2019quantum}
 
-\newpage 
-%-------------------------------------------------------------------------------
-\section{Final remarks}
-%-------------------------------------------------------------------------------
+%\newpage 
+
+%%-------------------------------------------------------------------------------
+%\section{Medicine}
+%%-------------------------------------------------------------------------------
+%
+%\begin{itemize}
+%\item Drug discovery \cite{cao2018potential}
+%\item  \cite{floether2023state}
+%
+%\item \cite{cordier2022biology}
+%\end{itemize}
+%\newpage 
+%%-------------------------------------------------------------------------------
+%\section{Final remarks}
+%%-------------------------------------------------------------------------------
 
 
 \paragraph{Acknowledgements}
