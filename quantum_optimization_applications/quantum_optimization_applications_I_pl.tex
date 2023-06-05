@@ -1,0 +1,172 @@
+% !TeX spellcheck = pl_PL
+\documentclass[a4paper,11pt]{article}
+%\documentclass[lefttitle,11pt,preprint]{elsarticle}
+
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{polski}
+\usepackage{xspace}
+
+
+\newcommand{\docName}{raportu\xspace}
+\newcommand{\DocName}{Report\xspace}
+
+
+\begin{document}
+
+%\begin{frontmatter}
+
+\title{Technologie obliczeń kwantowych do rozwiązywania problemów optymalizacyjnych w rzeczywistych scenariuszach}
+\author{Jaros\l aw Adam Miszczak}
+\date{30/05/2023}
+%\address{{Institute of Theoretical and Applied Informatics, Polish Academy
+%		of Sciences}, {Baltycka 5}, {44-100}, {Gliwice}, {Poland}}
+%\address{Institute of Theoretical and Applied Informatics, Polish Academy
+%of Sciences,\\ Ba{\l}tycka 5, 44-100 Gliwice, Poland}
+%\ead{jmiszczak@iitis.pl}
+%\ead[orcid]{https://orcid.org/0000-0001-8790-101X}
+
+\maketitle
+
+\begin{abstract}
+Możliwość wykorzystania kwantowych urządzeń obliczeniowych do osiągania prędkości nieosiągalnych dla klasycznych komputerów cyfrowych jest jedną z najważniejszych motywacji dla ostatnich postępów w technologiach kwantowych. Aby ocenić rzeczywiste możliwości technologii kwantowych, konieczne jest uwzględnienie rzeczywistych scenariuszy i porównanie wyników uzyskanych przez komputery kwantowe z klasycznymi rozwiązaniami dla realistycznych instancji. Celem niniejszego raportu jest przedstawienie przeglądu ostatnich prób wykorzystania kwantowych technologii obliczeniowych do rozwiązywania problemów optymalizacyjnych w oparciu o rzeczywiste dane. W przeciwieństwie do ogólnych przeglądów w tej dziedzinie, skupiamy się na przypadkach, w których rozwiązanie kwantowe jest opracowywane dla realistycznego zbioru danych i może zostać przełożone na rozwiązanie użyteczne w rzeczywistych zastosowaniach, a rozwiązanie uzyskane przy użyciu kwantowego podejścia obliczeniowego jest porównywane z rozwiązaniami uzyskanymi przy użyciu standardowych, klasycznych metod.
+\end{abstract}
+
+\tableofcontents
+
+%\begin{keyword} 
+%emerging technologies \sep natural computing \sep analogous computing \sep combinatorial optimization
+%\end{keyword}
+%
+%\end{frontmatter}
+
+\newpage
+
+%-------------------------------------------------------------------------------
+\section{Wprowadzenie}
+%-------------------------------------------------------------------------------
+
+Celem niniejszego raportu jest przedstawienie przeglądu ostatnich prób wykorzystania kwantowych technologii obliczeniowych do rozwiązywania problemów optymalizacyjnych pojawiających się w rzeczywistych scenariuszach. W tym celu skupiamy się na wybranych demonstracjach kwantowych metod rozwiązywania problemów optymalizacyjnych posiadających dwie szczególne cechy.
+
+Po pierwsze, interesują nas głównie przypadki, w których rozwiązanie kwantowe zostało opracowane dla realistycznego zbioru danych i może zostać przełożone na rozwiązanie użyteczne w rzeczywistych zastosowaniach. Jest to poważne ograniczenie, gdyż większość badań wykorzystujących obliczenia kwantowe do rozwiązywania problemów optymalizacyjnych opiera się na modelach zabawkowych i ma na celu zademonstrowanie wykonalności podejścia opartego na obliczeniach kwantowych. Należy jednak zauważyć, że ponieważ obliczenia kwantowe zapewniają uniwersalny model obliczeń, wykorzystanie obliczeń kwantowych jest zawsze możliwe. Dlatego też w większości przypadków opracowanie wydajnych rozwiązań kwantowych wymaga dogłębnego zrozumienia obliczeń kwantowych i konkretnego problemu, który ma zostać rozwiązany za pomocą komputera kwantowego. Z tego powodu edukacja w zakresie programowania kwantowego i rozwoju oprogramowania kwantowego jest kluczowa~\cite{salehi2022computer}.
+
+Po drugie, ponieważ jesteśmy zainteresowani faktyczną oceną użyteczności technologii kwantowych, skupiamy się na zastosowaniach, w których rozwiązanie uzyskane przy użyciu kwantowego podejścia obliczeniowego jest porównywane z rozwiązaniami uzyskanymi przy użyciu standardowych, klasycznych metod. W związku z tym dążymy do aplikacji, w których autorzy przedstawiają zarówno rozwiązanie kwantowe, jak i klasyczne, wraz z mocnymi i słabymi stronami obu podejść. Zapewnia to możliwość rzetelnego porównania podejścia kwantowego i klasycznego dla każdego przypadku.
+
+
+Dwa główne podejścia do wykorzystania komputerów kwantowych w problemach optymalizacji kombinatorycznej obejmują QAOA \cite{farhi2014quantum} i QAOA+ \cite{hadfield2019quantum} dla komputerów kwantowych opartych na bramkach oraz kwantowe wyżarzanie \cite{canivell2021startup}. W obu przypadkach problem jest reprezentowany za pomocą nieograniczonej wersji modelu Isinga \cite{lucas2014ising} lub QUBO \cite{glover2018tutorial}. 
+
+Przegląd komercyjnych zastosowań obliczeń kwantowych, identyfikujący bezpieczne szyfrowanie kwantowe, odkrywanie materiałów i leków oraz algorytmy inspirowane kwantami wśród najbardziej obiecujących zastosowań kwantowych, znajduje się w \cite{bova2021commercial}. 
+
+Najnowszy przegląd postępów w dziedzinie kwantowego wyżarzania (QA), znanego również jako adiabatyczne obliczenia kwantowe (AQC) lub kwantowy algorytm adiabatyczny (QAA), przedstawiono w ~\cite{yarkoni2022quantum}. W odniesieniu do optymalizacji kombinatorycznej, autorzy identyfikują mobilność, harmonogramowanie i finanse jako najbardziej obiecujące obszary zastosowań kwantowych technologii obliczeniowych.
+
+
+
+Jednym z kluczowych elementów ekosystemu obliczeń kwantowych jest oprogramowanie wspierające technologie obliczeń kwantowych. Porównanie platform oprogramowania do obliczeń kwantowych przedstawiono w ~\cite{larose2019overview}, a najnowsze przeglądy postępów i trendów w tej dziedzinie można znaleźć w \cite{zhao2020quantum}, \cite{gill2021quantum} i \cite{miszczak2023symbolic}. Ponadto, praktyczne podejście do wykorzystania optymalizacji kwantowej można znaleźć w~\cite{combarro2023practical}.
+
+Wreszcie, należy również rozważyć ogólny przegląd kwantowych technologii obliczeniowych z perspektywy ekonomicznej i prawnej.
+Badanie przedstawione w \cite{seskir2021landscape} zawiera analizę działań badawczych w dziedzinie technologii kwantowych. Dogłębną analizę niedawnej eksplozji komercyjnego zainteresowania technologiami kwantowymi można znaleźć w~\cite{seskir2022landscape}. Wreszcie, różne polityczne i prawne aspekty technologii kwantowych zostały omówione w~\cite{hoofnagle2021law}. 
+
+
+
+
+
+Autorzy \cite{choi2019tutorial} przedstawiają dogłębną analizę algorytmu przybliżonej optymalizacji kwantowej (Quantum Approximate Optimization Algorithm - QAOA), który oferuje znaczące ulepszenia w rozwiązywaniu różnych problemów optymalizacji kombinatorycznej, a także zagłębiają się w Quantum Alternating Operator Ansatz i jego zastosowania, aby wyjaśnić koncepcję przybliżonej optymalizacji. W artykule \cite{ruan2023quantum} autorzy przedstawiają formalny opis metod kodowania dla różnych typów ograniczeń. Podają również przykłady zastosowania proponowanego schematu dla niektórych dobrze znanych problemów optymalizacyjnych.
+
+W \cite{crosson2021prospects} przedstawiono ocenę możliwości osiągnięcia przez QA kwantowego przyspieszenie w stosunku do najlepszych klasycznych metod.
+
+\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Transport}
+%-------------------------------------------------------------------------------
+
+Będąc jednym z największych obszarów gospodarki, transport stanowi naturalny obszar do wykorzystania potencjału oferowanego przez komputery kwantowe. 
+
+%-------------------------------------------------------------------------------
+\subsection{Vehicle routing}
+%-------------------------------------------------------------------------------
+Jedno z pierwszych rzeczywistych zastosowań QA do optymalizacji ruchu drogowego zostało zaproponowane w ~\cite{neukart2017traffic} w ramach współpracy między Volkswagen i D-Wave Systems. W tej pracy części rzeczywistego problemu optymalizacji przepływu ruchu zostały zmapowane do postaci odpowiedniej dla urządzeń QA. Dodatkowo przeprowadzono analizę porównawczą rozwiązania kwantowego z losowym przypisaniem.
+
+W pracy \cite{borowski2020new} wprowadzono dwa algorytmy hybrydowe i w pełni kwantowe rozwiązania problemu Capacitated Vehicle Routing Problem (CVRP) i porównano je z rozwiązaniem klasycznym. Wprowadzone algorytmy są testowane przy użyciu frameworka D-Wave na dobrze znanym zestawie wzorcowych przypadków testowych. Dodatkowo algorytmy są uruchamiane na scenariuszach testowych zbudowanych w oparciu o realistyczne sieci drogowe.
+
+
+Analiza porównawcza rozwiązania kwantowego do wyznaczania tras pojazdów z Gurobi została przedstawiona w \cite{anil2022performance}. Autorzy porównali czas wymagany do znalezienia rozwiązania, a także jakość rozwiązania dla D-Wave Hybrid i Gurobi v9.5. Wyniki sugerują, że skalowanie kwantowych urządzeń wyżarzających jest lepsze w porównaniu z klasycznym podejściem.
+
+\newpage
+%-------------------------------------------------------------------------------
+\subsection{Logistyka}
+%-------------------------------------------------------------------------------
+
+\cite{correll2023quantum}
+
+
+%-------------------------------------------------------------------------------
+\subsection{Autobusy}
+%-------------------------------------------------------------------------------
+ \cite{yarkoni2020quantum}
+
+\newpage 
+%-------------------------------------------------------------------------------
+\subsection{Zarządzanie koleją}
+%-------------------------------------------------------------------------------
+
+Innym obszarem zastosowań, który jest badany w kontekście technologii obliczeń kwantowych, jest dyspozytorstwo i zarządzanie koleją.
+
+
+In \cite{domino2022quadratic} problem zmiany harmonogramu ruchu kolejowego z powodu zakłóceń. Problem został zakodowany w formułach QUBO i HOBO i rozwiązany przy użyciu D-Wave Advanatage. Główną wadą podejścia kwantowego jest liczba kubitów dostępnych na obecnych urządzeniach, co poważnie ogranicza użyteczność proponowanych modeli. Analiza porównawcza rozwiązania opartego na D-Wave z rozwiązaniem klasycznym została przedstawiona w \cite{domino2023quantum} i wyraźnie pokazuje, że wykorzystanie obecnych urządzeń QA jest bardzo ograniczone w aspekcie zarządzania koleją w realistycznych scenariuszach. 
+
+\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Finanse}
+%-------------------------------------------------------------------------------
+
+
+Wykorzystanie kwantowych technologii obliczeniowych w finansach może być postrzegane jako najbardziej bezpośrednia droga do komercjalizacji ich potencjału. Można to osiągnąć poprzez wykorzystanie procedur optymalizacji obliczeń kwantowych w aplikacjach związanych z zarządzaniem pieniędzmi. Z tego powodu dostępnych jest kilka artykułów wprowadzających skierowanych do specjalistów finansowych oraz książek.
+
+W \cite{orus2019quantum} autorzy przedstawili przegląd możliwych kwantowych podejść obliczeniowych do problemów finansowych. W szczególności przedstawiają przegląd obecnych podejść i potencjalnych perspektyw, w tym dyskusję na temat tego, w jaki sposób QA może być wykorzystywana do optymalizacji portfela, znajdowania możliwości arbitrażu i oceny zdolności kredytowej.
+
+Wybrane zastosowania obliczeń kwantowych w finansach, koncentrujące się na optymalizacji portfela, omówiono w \cite{bouland2020prospects}. Tutaj skupiono się na znaczeniu algorytmów kwantowych dla finansów w perspektywie krótkoterminowej. Autorzy podkreślają, że niektóre z algorytmów kwantowych dla problemów finansowych powinny zapewnić przyspieszenie tylko w przypadku, gdy dostępne będą komputery kwantowe o większej skali. Dodatkowo, autorzy omawiają metody przybliżenia tych przyspieszeń do eksperymentalnej wykonalności poprzez opisanie algorytmów o niższej głębokości dla metod Monte Carlo i heurystyki QA dla optymalizacji portfela.
+
+W~\cite{venturelli2019reverse} opracowano hybrydową kwantowo-klasyczną metodę rozwiązywania problemów optymalizacji portfela o średniej wariancji. Próbki porównawcze są w tym przypadku oparte na sparametryzowanych próbkach optymalizacji portfela w oparciu o rzeczywiste statystyki danych finansowych i zgodnie z zasadami nowoczesnej teorii portfela (MPT).
+
+
+Algorytm kwantowy do analizy ryzyka kredytowego (CRA) został wprowadzony w~\cite{egger2021credit}. Autorzy zaimplementowali rozważany problem dla realistycznego rozkładu strat. Ponadto przeanalizowali skalowanie dla przypadku realistycznego rozmiaru problemu. Należy jednak zauważyć, że w tym przypadku zakłada się, że dostępne jest odporne na błędy urządzenie kwantowe. Wariant tego algorytmu przezwyciężający pewne ograniczenia oryginalnej propozycji został opisany w~\cite{dri2022towards,dri2023more}.
+
+\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Energetyka}
+%-------------------------------------------------------------------------------
+
+\cite{ajagekar2019quantum}
+
+%\newpage 
+
+%-------------------------------------------------------------------------------
+\section{Medycyna}
+%-------------------------------------------------------------------------------
+%
+\begin{itemize}
+\item Odkrywanie leków \cite{cao2018potential}
+\item  \cite{floether2023state}
+%
+\item \cite{cordier2022biology}
+\end{itemize}
+\newpage 
+%-------------------------------------------------------------------------------
+\section{Podsumowanie}
+%-------------------------------------------------------------------------------
+
+
+\paragraph{Podziękowania}
+Praca została zrealizowana przy wsparciu finansowym Narodowego Centrum Nauki w ramach grantu 2019/33/B/ST6/02011 oraz Narodowego Instytutu Przetwarzania Informacji w ramach projektu POIR.04.02.00-00-D014/20-00 "Krajowa Infrastruktura Superkomputerowa dla EuroHPC -- EuroHPC PL".
+
+\newpage
+\pagestyle{empty}
+\bibliographystyle{elsarticle-num}
+\bibliography{quantum_optimization_applications}
+
+\end{document}
