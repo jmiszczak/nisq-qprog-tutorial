@@ -19,7 +19,7 @@
 
 \title{Quantum computing technologies for solving optimization problems in real-world scenarios}
 \author{Jaros\l aw Adam Miszczak}
-\date{May 30, 2023}
+\date{June 10, 2023}
 %\address{{Institute of Theoretical and Applied Informatics, Polish Academy
 %		of Sciences}, {Baltycka 5}, {44-100}, {Gliwice}, {Poland}}
 %\address{Institute of Theoretical and Applied Informatics, Polish Academy
@@ -30,7 +30,7 @@
 \maketitle
 
 \begin{abstract}
-The possibility of using quantum computing devices for delivering speed-up unachievable for classical, digital computers is one of the most important motivation for the recent progress in quantum technologies. To asses the actual capabilities of quantum technologies it is necessary to take into account the real-world scenarios and benchmark the results obtained by quantum computers again the classical solutions for realistic instances. The goal of this \docName is to provide an overview of the recent attempts to utilize quantum computing technologies for solving optimization problems based on real-world data. In contrast to general reviews in this area, we focus on cases where quantum solution is developed for a realistic dataset and can be translated into the solution usable in real-world applications, and where  the solution obtained using quantum computing approach is benchmarked against solutions obtained using the standard, classical methods.
+The possibility of using quantum computing devices for delivering speed-up unachievable for classical, digital computers is one of the most important motivation for the recent progress in quantum technologies. To asses the actual capabilities of quantum technologies it is necessary to take into account the real-world scenarios and benchmark the results obtained by quantum computers again the classical solutions for realistic instances. The goal of this \docName is to provide an overview of the recent attempts to utilize quantum computing technologies for improving solutions of optimization problems based on real-world data. In contrast to general reviews in this area, we focus on cases where quantum solution is developed for a realistic dataset and can be translated into the solution usable in real-world applications, and where the solution obtained using quantum computing approach is benchmarked against solutions obtained using the standard methods.
 \end{abstract}
 
 \tableofcontents
@@ -70,14 +70,21 @@ Finally, one should could also consider the high-level overview of the quantum c
 The study presented in \cite{seskir2021landscape} provides an analysis of the research activities in the field of quantum technologies. An in-depth analysis of the recent explosion of commercial interest in quantum technologies can be found in~\cite{seskir2022landscape}. Finally, various political and legal aspects of quantum technologies are discussed in~\cite{hoofnagle2021law}. 
 
 
-
-
-
-
 Authors of \cite{choi2019tutorial} provide an in-depth exploration of the Quantum Approximate Optimization Algorithm (QAOA), which offers significant improvements in solving various combinatorial optimization problems, as well as delves into the Quantum Alternating Operator Ansatz and its applications,  to explain the concept of approximate optimization. In \cite{ruan2023quantum} authors provide a formal description of encoding methods for different types of constraints. They also provide examples of using the proposed scheme for some well-known optimization problems.
+
+In contrast to many review papers dealign with quantum computing, we assume that the reader has some general knowledge of quantum computing. Hence, we do not provide an introduction to quantum computing.
 
 %In \cite{crosson2021prospects} the assessment of the possibility for QA to 
 %achieve quantum speed-up relative to classical state-of-the-art methods is provided.
+
+
+
+
+
+In \cite{ajagekar2020quantum} hybrid quantum-classical models and methods for solving large-scale mixed-integer programming problems are proposed. The proposed models are studied in molecular conformation problem, job-shop scheduling problem, manufacturing cell formation
+problem, and the vehicle routing problem.
+
+
 
 \newpage 
 
@@ -139,31 +146,67 @@ A hybrid quantum-classical solution method to the mean-variance portfolio optimi
 
 Quantum algorithm for Credit Risk Analysis (CRA) was introduced in~\cite{egger2021credit}. Authors implemented the considered problem for a realistic loss distribution. Moreover, they analysed the scaling  for the case of a realistic problem size. One should note, however, that in this case it is assume that the fault-tolerant quantum device is available. A variant of this algorithm overcoming some limitation of the original proposal has been described in~\cite{dri2022towards,dri2023more}.
 
+
+Quantum risk analysis on IBM Q~\cite{woerner2019quantum}
+
 \newpage 
 
 %-------------------------------------------------------------------------------
 \section{Energy}
 %-------------------------------------------------------------------------------
 
-\cite{ajagekar2019quantum}
+Quantum computing is in many cases seen as one of the technologies crucial for building next generation energy production, distribution, and management systems. Authors of \cite{giani2021quantum} identify areas where quantum computing is most likely to contribute to renewable energy problems, including simulation, scheduling and dispatch, and reliability analyses. Recent research focused on utilizing quantum computing technologies for various smart grid applications is summarize in~\cite{ullah2022quantum}.
 
+
+\subsection{Systems optimization}
+
+In \cite{ajagekar2019quantum} authors discuss the potential and limitations of current quantum computers for energy system optimization. They study 
+Facility allocation problem, unit commitment problem, and heat exchanger network synthesis. For all cases the compare results obtained from D-Wave 2000Q and Gurobi solver.
+Discussion of prospects and challenges for using quantum computing technologies, including quantum machine learning and quantum chemistry, in the context of sustainable, renewable energy systems, are discussed in~\cite{ajagekar2022quantum}.
+
+\emph{multi-objective configuration optimization method (COM) and energy management strategy (EMS) for ship hybrid energy system based on quantum computing} \cite{si2022configuration}
 %\newpage 
+
+
+\subsection{Energy management}
+
+Recent thesis \cite{veshchezerova2022quantum} deals with optimization problems related to the charge of electric vehicles from the perspective of QAOA and quantum annealing.
+
+
 
 %-------------------------------------------------------------------------------
 \section{Medicine}
 %-------------------------------------------------------------------------------
 %
+
+Next pharma disruptors \cite{cova2021artificial}
+
 \begin{itemize}
-\item Drug discovery \cite{cao2018potential}
+\item Potential Drug discovery \cite{cao2018potential}
+\item Requires activities and industry approach to drug discovery \cite{zinner2022institutionalization}. Check also \cite{zinner2021quantum}
 \item  \cite{floether2023state}
 %
 \item \cite{cordier2022biology}
+
+\item Perspective in 2022 on \cite{blunt2022perspective}
 \end{itemize}
 \newpage 
 %-------------------------------------------------------------------------------
 \section{Final remarks}
 %-------------------------------------------------------------------------------
 
+
+\appendix
+
+\section{Review papers on industrial applications of quantum computing}
+
+\begin{itemize}
+\item Singh, J., Bhangu, K.S. Contemporary Quantum Computing Use Cases: Taxonomy, Review and Challenges. Arch Computat Methods Eng 30, 615–638 (2023).  \cite{singh2022contemporary} -- very broad review, many potential applications are mentioned, literature study, no in-depth analysis.
+
+\item \cite{ullah2022quantum} -- article summarizes the research outcomes of the most recent papers, highlights their suggestions for utilizing QC techniques for various smart grid applications, and further identifies the potential smart grid applications. Several real-world QC case studies in various research fields besides power and energy systems are demonstrated.
+
+\item Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical Engineers \cite{nourbakhsh2022quantum} -- focus on perspective for chemical and bio-chemical industry, also drug discover, literature review is also provided.
+\end{itemize}
 
 \paragraph{Acknowledgements}
 This work received support from the Polish National Science Center under the grant agreement 2019/33/B/ST6/02011 and from Polish National Information Processing Institute  under \emph{National Supercomputing Infrastructure for EuroHPC -- EuroHPC PL} project POIR.04.02.00-00-D014/20-00.
