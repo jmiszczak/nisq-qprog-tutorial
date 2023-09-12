@@ -83,6 +83,13 @@ In \cite{crosson2021prospects} the assessment of the possibility for QA to
 achieve quantum speed-up relative to classical state-of-the-art methods is provided. In \cite{ajagekar2020quantum} hybrid quantum-classical models and methods for solving large-scale mixed-integer programming problems are proposed. The proposed models are studied in molecular conformation problem, job-shop scheduling problem, manufacturing cell formation
 problem, and the vehicle routing problem.
 
+As the interest in quantum computing technologies resulted in the explostion of the new papers proposing methods for achieveing quantum advenatge, it is worth point some review and surveys. This includes serval review papers summarizing the industrial applications of quantum computing, and discussing the potential applications.
+
+Very broad review, including many potential applications and literature study is provided in~\cite{singh2023contemporary}. This survey attempts to review existing applications, technological advancements, and major challenges associated with quantum quantum computing technologies, and it is aimed at computer professionals rather than scientists. However, it offers no in-depth analysis of the included cases and can server only as a introductory guide to the field.
+Review focused on the grid applications in provided in~\cite{ullah2022quantum} The paper summarizes the research outcomes of the most recent papers, highlights their suggestions for utilizing techniques based on quantum computing for various smart grid applications, and further identifies the potential smart grid applications. It also included several real-world case studies of using quantum computing in various research fields besides power and energy systems are demonstrated.
+Another recent review \cite{nourbakhsh2022quantum} is focused on perspective of quantum computing for chemical and bio-chemical industry, including drug discover. The literature review is also provided.
+
+Finally, in \cite{ezratty2023where} authors investigate the resource requirements of various NISQ algorithms, which lead them to point out some several contradictions between near-term requirements and capabilities offered by actual as well as future quantum hardware. The paper also provides a survey of techniques which could help like qubit fidelities improvements, various breeds of quantum error mitigation methods, and hybridization. The presented methods are based on specific qubit types, including multimode photons, quantum annealers and quantum simulators. The broad overview of pros and cons of quantum technologies is provided in a book \cite{ezratty2021understanding} by the same author.
 
 
 %\newpage 
@@ -157,7 +164,8 @@ A hybrid quantum-classical solution method to the mean-variance portfolio optimi
 Quantum algorithm for Credit Risk Analysis (CRA) was introduced in~\cite{egger2021credit}. Authors implemented the considered problem for a realistic loss distribution. Moreover, they analysed the scaling  for the case of a realistic problem size. One should note, however, that in this case it is assume that the fault-tolerant quantum device is available. A variant of this algorithm overcoming some limitation of the original proposal has been described in~\cite{dri2022towards,dri2023more}.
 
 
-Quantum risk analysis on IBM Q~\cite{woerner2019quantum}
+Quantum risk analysis on IBM Q was presented in~\cite{woerner2019quantum}, where a quantum algorithm that outperforms classical Monte Carlo simulations in the task of risk analysis was proposed.  The proposed algorithm was
+tested for a small model, suggesting that it is possible to achieve a quadratic speed-up.
 
 \newpage 
 
@@ -206,19 +214,6 @@ Next pharma disruptors \cite{cova2021artificial}
 %-------------------------------------------------------------------------------
 
 
-\appendix
-
-\section{Review papers on industrial applications of quantum computing}
-
-\begin{itemize}
-\item Singh, J., Bhangu, K.S. Contemporary Quantum Computing Use Cases: Taxonomy, Review and Challenges. Arch Computat Methods Eng 30, 615–638 (2023).  \cite{singh2022contemporary} -- very broad review, many potential applications are mentioned, literature study, no in-depth analysis.
-
-\item \cite{ullah2022quantum} -- article summarizes the research outcomes of the most recent papers, highlights their suggestions for utilizing QC techniques for various smart grid applications, and further identifies the potential smart grid applications. Several real-world QC case studies in various research fields besides power and energy systems are demonstrated.
-
-\item Quantum Computing: Fundamentals, Trends and Perspectives for Chemical and Biochemical Engineers \cite{nourbakhsh2022quantum} -- focus on perspective for chemical and bio-chemical industry, also drug discover, literature review is also provided.
-
-\item This paper investigates the space, fidelity and time resources of various NISQ algorithms and highlights several contradictions between NISQ requirements and actual as well as future quantum hardware capabilities. It then covers various techniques which could help like qubit fidelities improvements, various breeds of quantum error mitigation methods, analog/digital hybridization, using specific qubit types like multimode photons as well as quantum annealers and analog quantum computers (aka quantum simulators or programmable Hamiltonian simulators) which seem closer to delivering useful applications although they have their own mid to longer-term scalability challenges.  \cite{ezratty2023where}
-\end{itemize}
 
 \paragraph{Acknowledgements}
 This work received support from the Polish National Science Center under the grant agreement 2019/33/B/ST6/02011 and from Polish National Information Processing Institute  under \emph{National Supercomputing Infrastructure for EuroHPC -- EuroHPC PL} project POIR.04.02.00-00-D014/20-00.
