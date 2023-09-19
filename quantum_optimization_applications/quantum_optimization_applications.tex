@@ -15,6 +15,7 @@
 
 \newenvironment{keyword}{\begin{flushleft}\textbf{Keywords}:}{\!\!.\end{flushleft}}
 
+\newcommand{\todo}[1]{\noindent\textbf{TODO}: #1 \newline\vspace{12pt}}
 
 \begin{document}
 
@@ -41,12 +42,12 @@ The possibility of using quantum computing devices for delivering speed-up unach
 emerging technologies \sep natural computing \sep analogous computing \sep combinatorial optimization \sep hybrid quantum-classical algorithm
 \end{keyword}
 
-\tableofcontents
+%\tableofcontents
 
 %
 %\end{frontmatter}
 
-\newpage
+%\newpage
 
 %-------------------------------------------------------------------------------
 \section{Introduction}
@@ -61,7 +62,7 @@ Second, as we are interested in actually assessing the usability of quantum tech
 
 Additionally, in regard to comparing the efficiency of quantum algorithms, one should also consult the recent paper \cite{lubinski2023application} where the benchmarking suite aiming to include only complete and practically useful algorithms is presented.
 
-Two main approaches to using quantum computers in combinatorial optimization problems include QAOA \cite{farhi2014quantum} and QAOA+ \cite{hadfield2019quantum} for gate-based quntum computers, and quantum annealing \cite{canivell2021startup}. In both cases the problem is represented using an unconstrained version as Ising  \cite{lucas2014ising} or QUBO \cite{glover2018tutorial} model. 
+Two main approaches to using quantum computers in combinatorial optimization problems include QAOA \cite{farhi2014quantum} and QAOA+ \cite{hadfield2019quantum} for gate-based quantum computers, and quantum annealing \cite{canivell2021startup}. In both cases the problem is represented using an unconstrained version as Ising  \cite{lucas2014ising} or QUBO \cite{glover2018tutorial} model. Recent review providing the performance study for QAOA and its variants in variouse scenarios is provided in~\cite{blekos2023review}.
 
 An overview of commercial applications of quantum computing, identifying  quantum-safe encryption, material and drug discovery, and quantum-inspired algorithms among the most promising quantum applications is provided in \cite{bova2021commercial}. 
 
@@ -95,13 +96,13 @@ Finally, in \cite{ezratty2023where} authors investigate the resource requirement
 %\newpage 
 
 %-------------------------------------------------------------------------------
-\section{Transportation}
+\section{Transportation and logistics}
 %-------------------------------------------------------------------------------
 
 Being one of the largest areas of industry, transportation provide a natural area for harnessing the potential offered by quantum computers. In fact the possibility of using quantum computers for increasing the cost-effectiveness of various aspects of transportation is among the major incentives for some companies to invest in quantum computing technologies~\cite{bentley2022quantum, cooper2022exploring}.
 
 %-------------------------------------------------------------------------------
-\subsection{Vehicle routing}
+%\subsection{Vehicle routing}
 %-------------------------------------------------------------------------------
 
 Routing problems are studied in logistics and operations research and 
@@ -119,20 +120,23 @@ Among the variants of the routing problem a particular example is given by the
 vehicle routing problem with time windows (VRPTW). In \cite{leonidas2023qubit} authors formulate the VRPTW as a QUBO and apply a quantum variational approach to the VRPTW using encoding scheme described in \cite{vikstaal2020applying}. This enables them to drastically reduced the number of required qubits. The proposed approach was evaluated on a set of VRPTW instances ranging from 11 to 3964 routes constructed using data provided by researchers from ExxonMobil. The proposed algorithms was compared with the standard encoding. The comparison was conducted using simulators and cloud quantum hardware provided by IBMQ, Rigetti, and IonQ. The proposed approach gives solutions similar to the solutions found by quantum algorithms using the full encoding. Obtained solutions are compared with standard full encoding approaches for problems size  of the order of 20-30 routes, which is the maximum possible size which can be dealt with on the near-term devices.
 
 %-------------------------------------------------------------------------------
-\subsection{Logistics}
+%\subsection{Logistics}
 %-------------------------------------------------------------------------------
 
-\cite{correll2023quantum}
+\paragraph{Transport Robot Scheduling Problem} Recently, a comparative case study benchmarking the performance of dedicated hardware again the software optimizers have been presented \cite{leib2023quantum}. In this case, the considered application is the problem of scheduling transport robots (Transport Robot Scheduling Problem -- TRSP), which is relevant in many real-world scenario occuring in the industry. The study included results from quantum-classical hybrid framework provided by D-Wave, quantum-inspired digital annealer developed by Fujitsu, and the state-of-the-art classical solver available in Gurobi. Obtained results suggest that the digital annealer can provide some advantages over the solver implemented in Gurobi.  Additionally,  and some opportunities for the hybrid quantum annealer. The main advantage of the presented approach is the comparison of three modelling approaches. Some comments concerning other approaches, including QAOA and Toshiba Simulated Bifurcation Machine, are included.
 
+%\cite{correll2023quantum}
+%
+%\cite{tomasiewicz2020foundations}
 
 %-------------------------------------------------------------------------------
-\subsection{Buses}
+\paragraph{Buses}
 %-------------------------------------------------------------------------------
  \cite{yarkoni2020quantum}
 
  
 %-------------------------------------------------------------------------------
-\subsection{Railway management}
+\paragraph{Railway management}
 %-------------------------------------------------------------------------------
 
 Another area of application which is studied in the context of quantum computing technology is the railway dispatching and management. This particular example is important as the rail transport provides one of the most promising solution for developing scalable and accessible mass transport systems, which is a crucial for limit fossil fuel dependency.
@@ -142,10 +146,12 @@ In \cite{domino2022quadratic} the problem of rescheduling of railway traffic due
 
 
 %-------------------------------------------------------------------------------
-\subsection{Space and aviation}
+\paragraph{Space and aviation}
 %-------------------------------------------------------------------------------
 
 Recently, the Quantum Approximate Optimization Algorithms has been empleyes for the Satellite Mission Planning Problem~\cite{quetschlich2023satellite}.
+
+\todo{1}
 
 %-------------------------------------------------------------------------------
 \section{Finance}
@@ -156,18 +162,19 @@ Utilization of quantum computing technologies in finance can be seen as the most
 
 In \cite{orus2019quantum} authors provided an overview of possible quantum computing approaches to financial problems. In particular, they provide an overview of current approaches and potential prospects, including the discussion of how QA can be used to portfolio optimization, arbitrage opportunities finding, and credit scoring.
 
+\paragraph{Portfolio optimization}
 Selected applications of quantum computing for finance, focusing on portfolio optimization, are discussed in \cite{bouland2020prospects}. Here, the focus is on  the relevance of quantum algorithms for finance in the near-term perspective. Authors stress that some of the some of the quantum algorithms for finance problems are expected to provide speed-ups only in the case of when larger-scale quantum computers are available. Additionally, they discuss methods for to bringing these speed-ups closer to experimental feasibility by describing lower depth algorithms for Monte Carlo methods and QA heuristics for portfolio optimization.
 
 A hybrid quantum-classical solution method to the mean-variance portfolio optimization problems is developed in~\cite{venturelli2019reverse}. The benchmarking samples are in this case based on the parametrized samples of portfolio optimization based on real financial data statistics and following the principles of the Modern Portfolio Theory (MPT).
 
-
+\paragraph{Credit Risk Analysis}
 Quantum algorithm for Credit Risk Analysis (CRA) was introduced in~\cite{egger2021credit}. Authors implemented the considered problem for a realistic loss distribution. Moreover, they analysed the scaling  for the case of a realistic problem size. One should note, however, that in this case it is assume that the fault-tolerant quantum device is available. A variant of this algorithm overcoming some limitation of the original proposal has been described in~\cite{dri2022towards,dri2023more}.
 
 
 Quantum risk analysis on IBM Q was presented in~\cite{woerner2019quantum}, where a quantum algorithm that outperforms classical Monte Carlo simulations in the task of risk analysis was proposed.  The proposed algorithm was
 tested for a small model, suggesting that it is possible to achieve a quadratic speed-up.
 
-\newpage 
+%\newpage 
 
 %-------------------------------------------------------------------------------
 \section{Energy}
@@ -176,7 +183,7 @@ tested for a small model, suggesting that it is possible to achieve a quadratic 
 Quantum computing is in many cases seen as one of the technologies crucial for building next generation energy production, distribution, and management systems. Authors of \cite{giani2021quantum} identify areas where quantum computing is most likely to contribute to renewable energy problems, including simulation, scheduling and dispatch, and reliability analyses. Recent research focused on utilizing quantum computing technologies for various smart grid applications is summarize in~\cite{ullah2022quantum}.
 
 
-\subsection{Systems optimization}
+\paragraph{Systems optimization}
 
 In \cite{ajagekar2019quantum} authors discuss the potential and limitations of current quantum computers for energy system optimization. They study 
 Facility allocation problem, unit commitment problem, and heat exchanger network synthesis. For all cases the compare results obtained from D-Wave 2000Q and Gurobi solver.
@@ -186,7 +193,7 @@ Discussion of prospects and challenges for using quantum computing technologies,
 %\newpage 
 
 
-\subsection{Energy management}
+\paragraph{Energy management}
 
 Recent thesis \cite{veshchezerova2022quantum} deals with optimization problems related to the charge of electric vehicles from the perspective of QAOA and quantum annealing.
 
@@ -208,7 +215,7 @@ Next pharma disruptors \cite{cova2021artificial}
 
 \item Perspective in 2022 on \cite{blunt2022perspective}
 \end{itemize}
-\newpage 
+%\newpage 
 %-------------------------------------------------------------------------------
 \section{Final remarks}
 %-------------------------------------------------------------------------------
