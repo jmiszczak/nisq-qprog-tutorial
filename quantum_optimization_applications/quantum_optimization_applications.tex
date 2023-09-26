@@ -130,9 +130,9 @@ vehicle routing problem with time windows (VRPTW). In \cite{leonidas2023qubit} a
 %\cite{tomasiewicz2020foundations}
 
 %-------------------------------------------------------------------------------
-\paragraph{Buses}
+\paragraph{Bus traffic management}
 %-------------------------------------------------------------------------------
- \cite{yarkoni2020quantum}
+In 2019 Volkswagen AG has partnered with Lisbon on a pilot project to alleviate the problem of balancing the influx of traffic visiting the Portuguese capital~\cite{yarkoni2020quantum}. They introduced a two-phase solution: the first phase employed data science to analyze movement patterns from previous conferences, creating temporary bus routes. The second phase featured a custom Android navigation app in Carris-operated buses, using a Volkswagen-provided quantum optimization service linked to live traffic data and a D-Wave quantum processor for real-time route optimization. The experiment has benn conducted during Web Summit conference in Lisbon, Portugal, a major European technology event drawing tens of thousands of attendees annually. The large influx of visitors strains the city's transportation services.  This marks the first known commercial application relying on a quantum processor for a critical live task.
 
  
 %-------------------------------------------------------------------------------
@@ -149,10 +149,7 @@ In \cite{domino2022quadratic} the problem of rescheduling of railway traffic due
 \paragraph{Space and aviation}
 %-------------------------------------------------------------------------------
 
-Recently, the Quantum Approximate Optimization Algorithms has been empleyes for the Satellite Mission Planning Problem~\cite{quetschlich2023satellite}.
-
-\todo{1}
-
+Recently, the Quantum Approximate Optimization Algorithms has been employed for the Satellite Mission Planning Problem (SMPP)~\cite{quetschlich2023satellite}. Authors propose a hybrid classical quantum approach for the SMPP. The problem is formulated as a Quadratic Unconstrained Binary Optimization (QUBO) problem and encoded into a quantum circuit based on the Variational Quantum Eigensolver (VQE, the Quantum Approximate Optimization Algorithm (QAOA), and its warm-start variant of QAOA -- W-QAOA. The resulting circuits are tested on a noise-free and a noise-aware quantum simulator. The obtained resuls suggest that the proposed approach can solve the SMPP for up to 21 possible images in reasonable time and resulting in close-to optimal solutions. Thus, the obtained result confirm the potential of quantum computing in this application domain.
 %-------------------------------------------------------------------------------
 \section{Finance}
 %-------------------------------------------------------------------------------
@@ -189,13 +186,19 @@ In \cite{ajagekar2019quantum} authors discuss the potential and limitations of c
 Facility allocation problem, unit commitment problem, and heat exchanger network synthesis. For all cases the compare results obtained from D-Wave 2000Q and Gurobi solver.
 Discussion of prospects and challenges for using quantum computing technologies, including quantum machine learning and quantum chemistry, in the context of sustainable, renewable energy systems, are discussed in~\cite{ajagekar2022quantum}.
 
-\emph{multi-objective configuration optimization method (COM) and energy management strategy (EMS) for ship hybrid energy system based on quantum computing} \cite{si2022configuration}
+
+In \cite{si2022configuration} authors introduce a multi-objective configuration optimization method (COM) and an energy management strategy (EMS) tailored for ship hybrid energy systems utilizing quantum computing. The research begins by establishing a mathematical model for the distributed power modules of the hybrid system. It formulates an objective function for configuration optimization, emphasizing low-cost, prolonged equipment lifespan, and high supply reliability. The paper then integrates fuzzy rules and a quantum multi-objective artificial bee colony algorithm to derive a configuration scheme meeting various constraints. Additionally, the study establishes an energy management optimization objective function that balances low-cost operation with maximum clean energy utilization. This function is optimized using the multi-objective quantum particle swarm optimization (QPSO) algorithm, enabling real-time optimal scheduling for the ship's hybrid energy system. Experimental validation with simulative navigation data confirms the feasibility of the multi-objective configuration optimization method utilizing the quantum artificial bee colony (QABC) algorithm.
+
+%Furthermore, the energy management experiments employing different strategies demonstrate the superior performance of the proposed strategy. It effectively reduces operating costs, fuel expenses, and pollutant emissions in marine power systems, aligning with the environmental requirements outlined in the Energy Efficiency Operating Index (EEOI) for ships.
+
+
+
 %\newpage 
 
 
 \paragraph{Energy management}
 
-Recent thesis \cite{veshchezerova2022quantum} deals with optimization problems related to the charge of electric vehicles from the perspective of QAOA and quantum annealing.
+Recent thesis \cite{veshchezerova2022quantum} deals with optimization problems related to the charge of electric vehicles from the perspective of QAOA and quantum annealing. This theis presents a comprehensive study focusing on two smart charging use cases. It encompasses a thorough analysis of the complexity of the natural formulations, followed by a quantum-compatible modelization approach. The resulting models' approximation properties are described, along with detailed experimental protocols for implementing QAOA and RQAOA. Specific QUBO encodings and parameter optimization routines are specified. The performance of these routines is evaluated through numerical assessments, with a comparative analysis against classical algorithms, accompanied by a rationale for the selection of classical counterparts based on the approximability properties of the addressed problems.
 
 
 
@@ -219,6 +222,11 @@ Next pharma disruptors \cite{cova2021artificial}
 %-------------------------------------------------------------------------------
 \section{Final remarks}
 %-------------------------------------------------------------------------------
+
+The objectives of this report were to present selected applications of quantum computing to solve computational problems occurring in real-world systems. Solutions from the fields of transportation, logistics, finance and energy that used near-real data were presented.
+
+
+In most cases, the proposed quantum approach cannot yet compete with classical solutions. However, there has been a lot of recent progress in the development of quantum hardware. This combination of improvements for both quantum hardware and software means that the approach based on delegating part of the calculations to specialized quantum machines could become a serious competitor to the currently used classical solutions in the future.
 
 
 
