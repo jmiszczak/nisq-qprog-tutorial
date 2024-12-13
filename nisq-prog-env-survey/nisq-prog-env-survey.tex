@@ -1,0 +1,96 @@
+% v. 0.01 - 13/12/2024 - initial version, some refs
+\documentclass[10pt,a4paper]{article}
+\usepackage{hyperref}
+
+%-------------------------------------------------------------------------------
+%
+% extra packages and local macros
+%
+%-------------------------------------------------------------------------------
+\usepackage{listings}
+\lstset{language=Mathematica,
+	morekeywords={
+		ParallelMap, KroneckerProduct, PauliMatrix, UnitVector,
+		SymbolicMatrix, SymbolicVector, 
+		SymbolicHermitianMatrix, SymbolicBistochasticMatrix,
+		Ket, Bra, Braket, Ketbra, Proj, %
+		SpecialUnitary, Unitary2Euler, %
+		Superoperator, ChannelToMatrix,  %
+		RandomKet, RandomUnitary, RandomDynamicalMatrix, TruncatedFidelity, %
+		ProductSuperoperator, SuperoperatorToKraus, ApplyChannel, %
+		Resuffling, PartialTransposition, PartialTrace,
+		RunGate, RunCGate, QRun, Gate, CGate
+	}
+}
+
+\lstset{
+	keywordstyle=\sc,
+	captionpos=b,
+	mathescape=true,
+	basicstyle=\small,
+	frame=lrtb,
+	showstringspaces=false
+}
+
+
+\lstset{
+	literate={
+		{delta}{{$\color{blue}\delta$}}{1} %
+		{DS}{\$}{1}
+	}
+}
+
+\usepackage{xspace}
+\newcommand{\MMA}{\emph{Mathematica}\xspace}
+\newcommand{\eg}{\emph{e.g.}\xspace}
+\newcommand{\ie}{\emph{i.e.}\xspace}
+
+\newcommand{\mma}[1]{\lstinline{#1}}
+\newcommand{\pkg}[1]{\textsc{#1}}
+
+\newcommand{\todo}[1]{\vspace*{6pt}\noindent \textbf{TODO} #1 \vspace*{6pt}}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+
+
+\title{Quantum programming in the NISQ era: a survery}
+\author{Jarosław Adam Miszczak}
+
+\begin{document}
+
+
+
+	\maketitle
+	
+	
+	\begin{abstract}
+		Quantum computing become one of the promising technologies
+	\end{abstract}
+
+
+	
+%------------------------------------------------------------------------------------------
+\section{Introduction}
+%------------------------------------------------------------------------------------------	
+
+There are two main factors driving the progress in the field of quantum programming. The first one is the developement of hybrid quantum-classical quantum algorithms. For this reasong any quantum computing language should be able to seamlessly handle the exchange of data between classical and quantum processing units.
+
+\emph{Quantum-Classical Hybrid Systems: Combining quantum processors (QPUs) with classical CPUs, GPUs, and FPGAs has become a promising direction. These hybrid systems efficiently handle data-intensive tasks, leveraging both classical and quantum strengths. Enhanced software infrastructures, such as extensions to HPC environments, facilitate seamless integration}
+
+
+\emph{Accessible Quantum Computing via Cloud Services: Companies like IBM, Google, and Amazon continue to expand quantum cloud platforms. These services allow businesses and researchers to experiment with quantum systems without the need for dedicated hardware, accelerating industrial applications}
+
+
+%------------------------------------------------------------------------------------------
+\section{Future directions}
+%------------------------------------------------------------------------------------------	
+
+
+One of the emerging options for creating quantum software is based on the recent trend of zero-code development. This type of quantum software is represented by the recently introduced \pkg{Pulsar Studio} ~\cite{pulsar-studio,pasqal-pulsar-s-1} solution, developed by French quantum hardware vendor Pasqal. \pkg{Pulsar Studio} enables the manipulation of Rydberg atoms, the technology underlying the hardware developed by the company. As in the case of \pkg{IonSim.jl}, the provided API is fine-tuned to the capabilities offered by the underlying physical phenomena. Additionally, as in that case, the code is targeting a specific hardware, \pkg{Pular Studio} imposes limitation resulting from the physical characteristics of the hardware platform. On the other hand, the programmer does not need to deal with the internal details of the physical evolution.
+
+
+
+%------------------------------------------------------------------------------------------
+\nocite{*}
+\bibliographystyle{plainurl}
+	\bibliography{nisq-prog-env-survey}
+\end{document}
