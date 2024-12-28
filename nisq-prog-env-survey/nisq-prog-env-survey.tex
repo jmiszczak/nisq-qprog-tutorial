@@ -1,4 +1,5 @@
 % v. 0.01 - 13/12/2024 - initial version, some refs
+% v. 0.02 - 28/12/2024 - new refs , som notes
 \documentclass[10pt,a4paper]{article}
 \usepackage{hyperref}
 
@@ -52,25 +53,32 @@
 \newcommand{\secref}[1]{Section~\ref{#1}}
 
 
-\title{Quantum programming in the NISQ era: a survery}
+\title{Near-term quantum computing and the end of quantum programming languages}
 \author{Jarosław Adam Miszczak}
+\date{28/12/2024 (v.0.02)}
 
 \begin{document}
 
 
 
-	\maketitle
-	
-	
-	\begin{abstract}
-		Quantum computing become one of the promising technologies
-	\end{abstract}
+\maketitle
+
+
+\begin{abstract}
+	\begin{itemize}
+		\item What is the goal of this paper/report?
+		\item What is the most important message?
+		\item Provide 1-2 sentences motivating this work.
+	\end{itemize}
+\end{abstract}
 
 
 	
 %------------------------------------------------------------------------------------------
 \section{Introduction}
 %------------------------------------------------------------------------------------------	
+
+Quantum computing has become one of the technologies promising to deliver capabilities significantly outperforming the current technologies in terms of computing speed, simulation efficiency and communication security.
 
 There are two main factors driving the progress in the field of quantum programming. The first one is the developement of hybrid quantum-classical quantum algorithms. For this reasong any quantum computing language should be able to seamlessly handle the exchange of data between classical and quantum processing units.
 
@@ -80,6 +88,7 @@ There are two main factors driving the progress in the field of quantum programm
 \emph{Accessible Quantum Computing via Cloud Services: Companies like IBM, Google, and Amazon continue to expand quantum cloud platforms. These services allow businesses and researchers to experiment with quantum systems without the need for dedicated hardware, accelerating industrial applications}
 
 
+
 %------------------------------------------------------------------------------------------
 \section{Future directions}
 %------------------------------------------------------------------------------------------	
@@ -87,6 +96,25 @@ There are two main factors driving the progress in the field of quantum programm
 
 One of the emerging options for creating quantum software is based on the recent trend of zero-code development. This type of quantum software is represented by the recently introduced \pkg{Pulsar Studio} ~\cite{pulsar-studio,pasqal-pulsar-s-1} solution, developed by French quantum hardware vendor Pasqal. \pkg{Pulsar Studio} enables the manipulation of Rydberg atoms, the technology underlying the hardware developed by the company. As in the case of \pkg{IonSim.jl}, the provided API is fine-tuned to the capabilities offered by the underlying physical phenomena. Additionally, as in that case, the code is targeting a specific hardware, \pkg{Pular Studio} imposes limitation resulting from the physical characteristics of the hardware platform. On the other hand, the programmer does not need to deal with the internal details of the physical evolution.
 
+\appendix
+
+\section{Some refs relevant for the discussed aspects}
+
+\begin{itemize}
+	
+	\item Quantum computing can be considered on different lvels of abstraction \cite{miszczak2011models, miszczak2012high}
+	
+	\item Quantum programming proven to be very useful in various ares including quantum games \cite{miszczak2005quantum}
+	
+	\item Among the first system used to include hihg-level structure useful for quantum computing was GNU Octave \cite{gawron2010extending} and Maple \cite{}.
+	
+	\item Symbolic capabilities were harnessed eg. for developing tools for analysis of quantum states and operations \cite{miszczak2011singular}.
+	
+	\item Quantum hardware was use for supporting the generation of true rand numbers used for scientific simulations \item{miszczak2012generating,miszczak2013employing}.
+	
+	\item Julia was use to provide support for various toolkits used in quantum computing \cite{glos2019qswalk}
+	
+\end{itemize}
 
 
 %------------------------------------------------------------------------------------------
